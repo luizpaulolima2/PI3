@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+}
+<link href="~/Content/bootstrap2.css" rel="stylesheet" />
+<div>
+    @if (TempData["erro"] != null)
+    {
+        <blockquote>
+            <h4>Erro</h4>
+            <p>@TempData["erro"]</p>
+        </blockquote>
+    }
+    @if (TempData["mensagem"] != null)
+    {
+        <div class="bs-callout bs-callout-info">
+            <h4>Parabéns !</h4>
+            <p>@Html.Raw(TempData["mensagem"])</p>
+        </div>
+    }
+</div>
+<div>
+    <a class="btn btn-default" href="@Url.Action("Index", "Home")">Voltar para a Home</a>
+</div>

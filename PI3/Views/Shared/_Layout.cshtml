@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Alpha Supermarket</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div class="container">
+        <header>
+            <!-- menu topo do site -->
+            <nav>
+                <ul>
+                    <li>
+                        <a href="@Url.Action("Index", "Conta")">
+                            <img src="~/Imagens/MinhaConta.png" alt="">
+                            <span>Minha conta</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Carrinho", "Home")">
+                            <img src="~/Imagens/Carrinho.png" alt="">
+                            <span>Visualizar Carrinho</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("FinalizarCompra", "Conta")">
+                            <img src="~/Imagens/FinalizarCompra.png" alt="">
+                            <span> Finalizar Compra </span>
+                        </a>
+                    </li>
+                    <li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="@Url.Action("Logout", "Home")">
+                                <img src="~/Imagens/login.png" alt="">
+                                <span>Logout</span>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Login", "Home")">
+                                <img src="~/Imagens/login.png" alt="">
+                                <span>login / Cadastrar-se</span>
+                            </a>
+                        }
+                    </li>
+                </ul>
+            </nav>
+            <!-- div que contem carrinho -->
+            <div class="nav-cart">
+                <div class="logo">
+                    <a href="~/Home/Index"><img src="~/Imagens/logo-alpha.png" alt=""></a>
+                </div>
+                <a href="#">
+                    <div class="carrinho2">
+                        <img src="~/Imagens/carrinhoCompras.png" alt="">
+                        <p>Carrinho</p>
+                        <p class="itens">0 Iten(s) - $0,00</p>
+                        <div class="seta-baixo"></div>
+                    </div>
+                </a>
+            </div>
+            <!-- fim header -->
+        </header>
+        <!-- menu categorias vertical -->
+        <nav class="responsive_menu">
+            <ul class="menu-categoria">
+                <li class="Bebidas"><a href="@Url.Action("Pesquisa", "Home", new { categoria = 4 })" title="bebidas"><div class="bebidas"></div><p>Bebidas</p></a></li>
+                <li class="Graos"><a href="@Url.Action("Pesquisa", "Home", new { categoria = 2 })" title="graõs"><div class="graos"></div><p>Mercearia</p></a></li>
+                <li class="Hortfruti"><a href="@Url.Action("Pesquisa", "Home", new { categoria = 6 })" title="hortifruti"><div class="hortifruti"></div><p>Feira</p></a></li>
+                <li class="Doces"><a href="@Url.Action("Pesquisa", "Home", new { categoria = 5 })" title="doces"><div class="doces"></div><p>Padaria</p></a></li>
+                <li class="Pescados"><a href="@Url.Action("Pesquisa", "Home", new { categoria = 1 })" title="pescados"><div class="pescados"></div><p>Limpeza</p></a></li>
+                <li class="Congelados"><a href="@Url.Action("Pesquisa", "Home", new { categoria = 3 })" title="congelados"><div class="congelados"></div><p>Frios e laticinios</p></a></li>
+                <li class="Default"><a href="@Url.Action("Pesquisa", "Home")" title="default"><div class="default"></div><p>Mais categorias</p></a></li>
+            </ul>
+        </nav>
+        <article style="margin-bottom: 0; height: 30px;">
+            <form action="@Url.Action("Pesquisa", "Home")">
+                <p class="Bestsellers"></p>
+                <div class="busca" style="height:30px;">
+                    <input type="text" name="termo" id="termo" placeholder="Buscar">
+                    <button type="submit"><img src="@Url.Content("~/Imagens/busca.png")" alt=""></button>
+                </div>
+            </form>
+        </article>
+
+        @RenderBody()
+
+        <aside>
+            <!-- lista ofertas da semana -->
+            <div class="offers">Ofertas</div>
+            <ul class="sale">
+                <li>
+                    <a href="#">
+                        <div class="product-img"><img src="~/imagens/0.jpg" alt="imagem produto"></div>
+                        <p class="product-name">ESTRELLA GALICIA</p>
+                        <p class="product-detail">Garrafa 200ml</p>
+                        <p class="product-price">Por: R$2,15</p>
+                    </a>
+                    <div class="product-hover">
+                        <button class="btn btn-primary see-more">Veja mais</button>
+                        <button class="btn  btn-success add-card">Add  ao carrinho</button>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="product-img"><img src="~/imagens/0.jpg" alt="imagem produto"></div>
+                        <p class="product-name">ESTRELLA GALICIA</p>
+                        <p class="product-detail">Garrafa 200ml</p>
+                        <p class="product-price">Por: R$2,15</p>
+                    </a>
+                    <div class="product-hover">
+                        <button class="btn btn-primary see-more">Veja mais</button>
+                        <button class="btn  btn-success add-card">Add  ao carrinho</button>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="product-img"><img src="~/imagens/0.jpg" alt="imagem produto"></div>
+                        <p class="product-name">ESTRELLA GALICIA</p>
+                        <p class="product-detail">Garrafa 200ml</p>
+                        <p class="product-price">Por: R$2,15</p>
+                    </a>
+                    <div class="product-hover">
+                        <button class="btn btn-primary see-more">Veja mais</button>
+                        <button class="btn  btn-success add-card">Add  ao carrinho</button>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="product-img"><img src="~/imagens/0.jpg" alt="imagem produto"></div>
+                        <p class="product-name">ESTRELLA GALICIA</p>
+                        <p class="product-detail">Garrafa 200ml</p>
+                        <p class="product-price">Por: R$2,15</p>
+                    </a>
+                    <div class="product-hover">
+                        <button class="btn btn-primary see-more">Veja mais</button>
+                        <button class="btn  btn-success add-card">Add  ao carrinho</button>
+                    </div>
+                </li>
+            </ul>
+        </aside>
+        <footer>
+            <div class="footer">
+                <div class="newsletter">
+                    <form>
+                        <label>Assine nossa <br> newsletter</label>
+                        <input class="form-control" type="text" placeholder="exemplo@gmail.com">
+                        <input class="envelope btn btn-default" value=" " type="button">
+                    </form>
+                </div>
+                <div class="information">
+                    <ul>
+                        <li>Fale conosco</li>
+                        <li>(11) 9-8248-8408</li>
+                        <li>(11) 9-8248-8408</li>
+                        <li>contato@alpha.com.br</li>
+                        <li>contato2@alpha.com.br</li>
+                    </ul>
+                    <ul>
+                        <li>Informaçõas</li>
+                        <li><a href="#">Empresa</a></li>
+                        <li><a href="#">Politica de privacidade</a></li>
+                        <li><a href="#">Termos de troca e devolução</a></li>
+                        <li><a href="#">Informações sobre fretes</a></li>
+                        <li><a href="#">Mapa da loja</a></li>
+                    </ul>
+                </div>
+                <div class="forma-de-pagamento">
+                    <p>Forma de pagamento</p>
+                    <ul>
+                        <li><div class="mastercard" title="mastercard"></div></li>
+                        <li><div class="visa" title="visa"></div></li>
+                        <li><div class="amex" title="amex"></div></li>
+                    </ul>
+                </div>
+            </div><!-- fim div footer -->
+        </footer>
+        <!-- fim container -->
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+<script>
+	// carrega sempre o carrinho
+	carregarCarrinho(0, 0);
+
+	function carregarCarrinho(id, qtd) {
+		$.post('@Url.Action("InsereProdutoCarrinho", "Home")',
+			{
+				produtoId: id,
+				quantidade: qtd
+			},
+			function (data) {
+				var totalProdutos = data.totalProdutos;
+				var valorTotal = data.valorTotal;
+				var texto = totalProdutos + ' Iten(s) - $' + valorTotal;
+				$(".carrinho2 p.itens").html(texto);
+			}
+		);
+	}
+</script>

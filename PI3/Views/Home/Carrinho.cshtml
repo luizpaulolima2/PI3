@@ -1,0 +1,79 @@
+﻿@model List<PI3.Database.Produto>
+@{
+    ViewBag.Title = "Carrinho";
+    Layout = null;
+    int i = 1;
+}
+<link href="~/Content/bootstrap2.css" rel="stylesheet" />
+<h2 class="page-header">Carrinho</h2>
+<p id="mensagem"></p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Produto
+            </th>
+            <th>
+                Preço
+            </th>
+            <th>
+                Quantidade
+            </th>
+            <th>
+                Valor Total
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var produto in Model.Distinct())
+        {
+            int qtdProduto = Model.Count(m => m.idProduto == produto.idProduto);
+            <tr>
+                <td>
+                    @i
+                </td>
+                <td>
+                    @produto.nomeProduto
+                </td>
+                <td>
+                    @produto.precProduto.ToString("n2")
+                </td>
+                <td>
+                    <input type="number" min="1" value="@qtdProduto" name="quantidade" />
+                </td>
+                <td>
+                    @((qtdProduto * produto.precProduto).ToString("n2"))
+                </td>
+                <td>
+                    <a class="btn btn-danger" href="@Url.Action("ExcluirItemCarrinho", "Home", new { produtoId = produto.idProduto })">Excluir</a>
+                </td>
+            </tr>
+            i++;
+        }
+        @if (Model.Count == 0)
+        {
+            <tr>
+                <td colspan="6" align="center">
+                    <h2>Não há produtos no carrinho</h2>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+    @if (Model.Count > 0)
+    {
+        <tfoot>
+            <tr>
+                <td colspan="6" align="right">
+                    <a class="btn btn-primary" href="@Url.Action("FinalizarCompra", "Conta")">Finalizar compra</a>
+                </td>
+            </tr>
+        </tfoot>
+    }
+</table>

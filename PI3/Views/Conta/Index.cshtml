@@ -1,0 +1,22 @@
+﻿@using PI3.Controllers
+@{
+    ViewBag.Title = "Minha Conta";
+	Layout = null;
+}
+<link href="~/Content/bootstrap2.css" rel="stylesheet" />
+<h2 class="page-header">Minha Conta</h2>
+<p id="mensagem">@TempData["sucesso"]</p>
+<div class="list-group">
+    <a href="@Url.Action("DadosCadastrais", "Conta", new {  ReturnUrl = Url.Action("Index", "Conta" )})" class="list-group-item">
+        <h4 class="list-group-item-heading">Dados cadastrais</h4>
+        <p class="list-group-item-text">Nesta opção você pode alterar todas as informações referente ao seu cadastro.</p>
+    </a>
+    <a href="@Url.Action("Index", "Endereco")" class="list-group-item">
+        <h4 class="list-group-item-heading">Endereços de entrega cadastrados</h4>
+        <p class="list-group-item-text">Consulte, inclua e exclua endereços de entrega para seus pedidos.</p>
+    </a>
+    <a href="@Url.Action("MeusPedidos", "Conta")" class="list-group-item">
+        <h4 class="list-group-item-heading">Pedidos</h4>
+        <p class="list-group-item-text">Acompanhe o histórico e o andamento dos seus pedidos</p>
+    </a>
+</div>

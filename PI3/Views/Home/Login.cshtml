@@ -1,0 +1,28 @@
+﻿@using PI3.Controllers
+@{
+	ViewBag.Title = "Login";
+	Layout = null;
+}
+<link href="~/Content/bootstrap2.css" rel="stylesheet" />
+<table>
+	<tr>
+		<td>
+			<h2>Login</h2>
+			@using (Html.BeginForm("Login", "Home", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new { role = "form" }))
+			{
+				<input type="text" name="usuario" class="form-control" required />
+				<input type="password" name="senha" class="form-control" required />
+				<input type="submit" name="logar" value="logar" class="btn btn-default" />
+				<br />
+				@Html.ValidationSummary()
+			}
+		</td>
+		<td>
+			<h1>OU</h1>
+		</td>
+		<td>
+			<h2>Cadastre-se</h2>
+			@Html.ActionLink("Cadastar", "Cadastrar", "Conta", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, null)
+		</td>
+	</tr>
+</table>

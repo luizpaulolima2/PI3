@@ -1,0 +1,42 @@
+﻿@model PI3.Database.Endereco
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap2.css" rel="stylesheet" />
+<h2 class="page-header">Adicionar endereço</h2>
+
+@using (Html.BeginForm("Adicionar", "Endereco", FormMethod.Post, new { role = "form", @class = "col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 " }))
+{
+    <div>
+        @Html.ValidationSummary(true)
+    </div>
+    <div>
+        @Html.HiddenFor(m => m.idEndereco)
+        @Html.HiddenFor(m => m.idCliente)
+    </div>
+    <div>
+        Apelido*@Html.TextBoxFor(m => m.nomeEndereco, new { @class = "form-control", required = "", @type = "text" })
+    </div>
+    <div>
+        CEP*@Html.TextBoxFor(m => m.CEPEndereco, new { @class = "form-control", required = "", @type = "text" })
+    </div>
+    <div>
+        Logradouro*@Html.TextBoxFor(m => m.logradouroEndereco, new { @class = "form-control", required = "", @type = "text" })
+    </div>
+    <div>
+        Número*@Html.TextBoxFor(m => m.numeroEndereco, new { @class = "form-control", required = "", @type = "text" })
+    </div>
+    <div>
+        Complemento*@Html.TextBoxFor(m => m.complementoEndereco, new { @class = "form-control", required = "", @type = "text" })
+    </div>
+    <div>
+        Cidade*@Html.TextBoxFor(m => m.cidadeEndereco, new { @class = "form-control", required = "", @type = "text" })
+    </div>
+    <div>
+        País*@Html.TextBoxFor(m => m.paisEndereco, new { @class = "form-control", required = "", @type = "text" })
+    </div>
+    <div>
+        <input type="submit" value="Adicionar" class="btn btn-default" />
+    </div>
+}

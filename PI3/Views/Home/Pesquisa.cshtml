@@ -1,0 +1,46 @@
+﻿@model List<PI3.Database.Produto>
+@{
+    ViewBag.Title = "Pesquisar";
+	int contador = 1;
+}
+<article>
+    @if (Model == null || Model.Count == 0)
+    {
+        @Html.Raw("Nenhum produto encontrado :(")
+    }
+	@foreach (var produto in Model)
+	{
+		if(contador == 1)
+		{
+			@Html.Raw("<div class='row' style='margin-top:0;'>")
+		}
+		
+		<div class="product-align" onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = produto.idProduto })'">
+            <div class="product" itemscope itemtype="http://schema.org/Product">
+                <div class="product-img">
+                    <img itemprop="image" class="center-block" alt="imagem produto" src="data:image/jpg;base64,@(Convert.ToBase64String(produto.imagem))">
+                </div>
+                <p class="product-name" itemprop="name">@produto.nomeProduto</p>
+                <p class="product-detail" itemprop="review">NÃO SEI O QUE COLOCAR</p>
+                <p class="product-review">sdsd</p>
+
+                <!-- div que separa itens referente ao preço de cada produto -->
+                <p class="product-price">Por: R$@produto.precProduto.ToString("n2")</p>
+
+                <!-- fim div que engloba todo o produto -->
+            </div>
+            <!-- fim div que alinha produtos-->
+        </div>
+		
+		if(contador == 3)
+		{
+			@Html.Raw("</div>")
+		
+			contador = 1;
+		}
+		else
+		{
+			contador++;
+		}
+	}
+</article>

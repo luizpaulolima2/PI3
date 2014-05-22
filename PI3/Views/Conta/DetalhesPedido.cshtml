@@ -1,0 +1,44 @@
+﻿@model List<PI3.Database.ItemPedido>
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap2.css" rel="stylesheet" />
+<h3 class="page-header">Itens do pedido #@Model[0].idPedido</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Produto
+            </th>
+            <th>
+                Quantidade
+            </th>
+            <th>
+                Preço Unit.
+            </th>
+            <th>
+                Total
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Produto.nomeProduto
+                </td>
+                <td>
+                    @item.qtdProduto
+                </td>
+                <td>
+                    @item.precoVendaItem.ToString("n2")
+                </td>
+                <td>
+                    @((item.qtdProduto * item.precoVendaItem).ToString("n2"))
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
