@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'c:\users\luiz\documents\visual studio 2013\Projects\PI3\PI3\Database\alphaSupermarket.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\carambola-acer\Documents\Visual Studio 2013\Projects\PI3\PI3\Database\alphaSupermarket.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

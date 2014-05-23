@@ -33,6 +33,9 @@
     <div>
         Cidade*@Html.TextBoxFor(m => m.cidadeEndereco, new { @class = "form-control", required = "", @type = "text" })
     </div>
+	<div>
+        UF*@Html.TextBoxFor(m => m.UFEndereco, new { @class = "form-control", required = "", @type = "text", @maxlength = "2" })
+    </div>
     <div>
         País*@Html.TextBoxFor(m => m.paisEndereco, new { @class = "form-control", required = "", @type = "text" })
     </div>

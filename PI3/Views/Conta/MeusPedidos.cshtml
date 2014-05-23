@@ -1,7 +1,7 @@
 ﻿@model PI3.Database.Cliente
 @{
-    Layout = null;
-    ViewBag.Title = "Acompanhe seu pedido";
+	Layout = null;
+	ViewBag.Title = "Acompanhe seu pedido";
 }
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link href="~/Content/bootstrap2.css" rel="stylesheet" />
@@ -10,80 +10,90 @@
 <h2 class="page-header">Acompanhe seu pedido</h2>
 <p id="mensagem"></p>
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                Pedido Nº
-            </th>
-            <th>
-                Status
-            </th>
-            <th>
-                Tipo Pagamento
-            </th>
-            <th>
-                Data Pedido
-            </th>
-            <th>
-                Valor Total
-            </th>
-            <th>
-                Detalhes
-            </th>
-            <th>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model.Pedido.Count == 0)
-        {
-            <tr>
-                <td colspan="6">
-                    <h2>Não há pedidos</h2>
-                </td>
-            </tr>
-        }
-        @foreach (var pedido in Model.Pedido)
-        {
-            <tr>
-                <td>
-                    @pedido.idPedido
-                </td>
-                <td>
-                    @pedido.StatusPedido.descStatus
-                </td>
-                <td>
-                    @pedido.TipoPagamento.descTipoPagto
-                </td>
-                <td>
-                    @pedido.dataPedido.ToShortDateString()
-                </td>
-                <td>
-                    @pedido.ItemPedido.Sum(p => p.precoVendaItem).ToString("n2")
-                </td>
-                <td>
-                    <a name="detalhes" id="detalhes" class="btn btn-default" href="@Url.Action("DetalhesPedido", "Conta", new { id = pedido.idPedido })">Detalhes</a>
-                </td>
-                <td>
-                    <a class="btn btn-info" href="@Url.Action("CancelarPedido", "Conta", new { id = pedido.idPedido })" @(pedido.idStatus <= 2 ? "" : "disabled") onclick="return confirm('Deseja cancelar o pedido ?');">Cancelar Pedido</a>
-                </td>
-            </tr>
-        }
-    </tbody>
+	<thead>
+		<tr>
+			<th>
+				Pedido Nº
+			</th>
+			<th>
+				Status
+			</th>
+			<th>
+				Tipo Pagamento
+			</th>
+			<th>
+				Data Pedido
+			</th>
+			<th>
+				Endereço para entrega
+			</th>
+			<th>
+				Valor Total
+			</th>
+			<th>
+				Itens
+			</th>
+			<th>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model.Pedido.Count == 0)
+		{
+			<tr>
+				<td colspan="6">
+					<h2>Não há pedidos</h2>
+				</td>
+			</tr>
+		}
+		@foreach (var pedido in Model.Pedido)
+		{
+			<tr>
+				<td>
+					@pedido.idPedido
+				</td>
+				<td>
+					@pedido.StatusPedido.descStatus
+				</td>
+				<td>
+					@pedido.TipoPagamento.descTipoPagto
+				</td>
+				<td>
+					@pedido.dataPedido.ToShortDateString()
+				</td>
+				<td>
+					@pedido.Endereco.CEPEndereco
+					<br />
+					@pedido.Endereco.logradouroEndereco, @pedido.Endereco.numeroEndereco - @pedido.Endereco.complementoEndereco
+					<br />
+					@pedido.Endereco.cidadeEndereco - @pedido.Endereco.paisEndereco
+				</td>
+				<td>
+					@pedido.ItemPedido.Sum(p => p.precoVendaItem).ToString("n2")
+				</td>
+				<td>
+					<a name="detalhes" id="detalhes" class="btn btn-default" href="@Url.Action("DetalhesPedido", "Conta", new { id = pedido.idPedido })">Detalhes</a>
+				</td>
+				<td>
+					<a class="btn btn-info" href="@Url.Action("CancelarPedido", "Conta", new { id = pedido.idPedido })" @(pedido.idStatus <= 2 ? "" : "disabled") onclick="return confirm('Deseja cancelar o pedido ?');">Cancelar Pedido</a>
+				</td>
+			</tr>
+		}
+	</tbody>
 </table>
 <script>
-    $(function () {
-        $("#detalhes").fancybox({
-            maxWidth: 800,
-            maxHeight: 600,
-            fitToView: false,
-            width: '70%',
-            height: '50%',
-            autoSize: false,
-            closeClick: false,
-            openEffect: 'none',
-            closeEffect: 'none',
-            type: 'iframe'
-        });
-    });
+	$(function () {
+		$("#detalhes").fancybox({
+			maxWidth: 800,
+			maxHeight: 600,
+			fitToView: false,
+			width: '70%',
+			height: '50%',
+			autoSize: false,
+			closeClick: false,
+			openEffect: 'none',
+			closeEffect: 'none',
+			type: 'iframe'
+		});
+	});
 </script>

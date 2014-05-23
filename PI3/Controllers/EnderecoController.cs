@@ -51,7 +51,7 @@ namespace PI3.Controllers
                     }
                 }
 
-                return RedirectToAction("Index");
+				return RedirectToAction("Index", "Endereco", new { returnUrl = Request.QueryString["ReturnUrl"] });
             }
         }
 

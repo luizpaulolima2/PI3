@@ -117,7 +117,7 @@ namespace PI3.Controllers
             using (var db = new alphasupermarketEntities())
             {
                 string email = User.Identity.Name;
-                var cliente = db.Cliente.Include("Pedido").Include("Pedido.StatusPedido").Include("Pedido.TipoPagamento").Include("Pedido.ItemPedido").FirstOrDefault(c => c.emailCliente == email);
+                var cliente = db.Cliente.Include("Pedido").Include("Pedido.StatusPedido").Include("Pedido.TipoPagamento").Include("Pedido.ItemPedido").Include("Endereco").FirstOrDefault(c => c.emailCliente == email);
 
                 return View(cliente);
             }
@@ -179,6 +179,7 @@ namespace PI3.Controllers
                     pedido.idStatus = (int)StatusTransacaoEnum.AguardandoAprovacao;
                     pedido.dataPedido = DateTime.Now;
                     pedido.idTipoPagto = byte.Parse(Request.Form["pagamento"].ToString());
+					pedido.idEndereco = int.Parse(Request.Form["endereco"].ToString());
 
                     db.Pedido.Add(pedido);
                     db.SaveChanges();

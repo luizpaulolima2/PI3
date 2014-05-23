@@ -22,7 +22,7 @@
 		</td>
 		<td>
 			<h2>Cadastre-se</h2>
-			@Html.ActionLink("Cadastar", "Cadastrar", "Conta", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, null)
+			@Html.ActionLink("Cadastar", "Cadastrar", "Conta", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, new { @class = "btn btn-default" })
 		</td>
 	</tr>
 </table>
