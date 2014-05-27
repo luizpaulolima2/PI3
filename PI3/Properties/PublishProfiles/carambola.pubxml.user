@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\Thais\Documents\GitHub\PI3\publicar</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>05/24/2014 00:47:34</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>05/24/2014 00:47:42</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>05/24/2014 00:47:42</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
+      <publishTime>05/24/2014 00:47:43</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
+      <publishTime>05/24/2014 00:47:44</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
+      <publishTime>05/24/2014 00:47:44</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>05/24/2014 00:47:54</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>05/24/2014 00:47:54</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
+      <publishTime>05/24/2014 00:47:55</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>05/24/2014 00:47:54</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Facebook.dll">
+      <publishTime>05/24/2014 00:47:55</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Google.dll">
+      <publishTime>05/24/2014 00:47:55</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.MicrosoftAccount.dll">
+      <publishTime>05/24/2014 00:47:56</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
+      <publishTime>05/24/2014 00:47:56</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Twitter.dll">
+      <publishTime>05/24/2014 00:47:56</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>05/24/2014 00:47:57</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>05/24/2014 00:47:58</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>05/24/2014 00:47:58</publishTime>
+    </File>
+    <File Include="bin/PI3.dll">
+      <publishTime>05/24/2014 14:05:29</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>05/24/2014 00:47:53</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>05/24/2014 00:47:47</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>05/24/2014 00:47:50</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>05/24/2014 00:47:49</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>05/24/2014 00:47:53</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>05/24/2014 00:47:53</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>05/24/2014 00:47:53</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>05/24/2014 00:47:59</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Content/bootstrap2.css">
+      <publishTime>05/24/2014 06:50:05</publishTime>
+    </File>
+    <File Include="Content/fancybox/blank.gif">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Content/fancybox/fancybox_loading%402x.gif">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Content/fancybox/fancybox_loading.gif">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Content/fancybox/fancybox_overlay.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Content/fancybox/fancybox_sprite%402x.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Content/fancybox/fancybox_sprite.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Content/fancybox/helpers/fancybox_buttons.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Content/fancybox/helpers/jquery.fancybox-buttons.css">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Content/fancybox/helpers/jquery.fancybox-buttons.js">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Content/fancybox/helpers/jquery.fancybox-media.js">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Content/fancybox/helpers/jquery.fancybox-thumbs.css">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Content/fancybox/helpers/jquery.fancybox-thumbs.js">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Content/fancybox/jquery.fancybox.css">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Content/fancybox/jquery.fancybox.js">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Content/fancybox/jquery.fancybox.pack.js">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Database/alphaSupermarket.edmx.diagram">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>05/24/2014 00:44:59</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>05/24/2014 00:44:59</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>05/24/2014 00:44:59</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>05/24/2014 00:44:59</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>05/24/2014 00:44:59</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/0.jpg">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/01.jpg">
+      <publishTime>05/24/2014 09:25:11</publishTime>
+    </File>
+    <File Include="Imagens/02.jpg">
+      <publishTime>05/24/2014 09:25:11</publishTime>
+    </File>
+    <File Include="Imagens/03.jpg">
+      <publishTime>05/24/2014 09:25:11</publishTime>
+    </File>
+    <File Include="Imagens/04.jpg">
+      <publishTime>05/24/2014 09:25:11</publishTime>
+    </File>
+    <File Include="Imagens/05.jpg">
+      <publishTime>05/24/2014 09:25:11</publishTime>
+    </File>
+    <File Include="Imagens/06.jpg">
+      <publishTime>05/24/2014 09:25:11</publishTime>
+    </File>
+    <File Include="Imagens/1.jpg">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/2.jpg">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/amex.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/banner.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/bebidas.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/benner.jpg">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/busca,png.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/busca.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/carnes.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/Carrinho.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/carrinhoCompras.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/congelados.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/default.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/doces.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/envelope.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/FinalizarCompra.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/graos.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/hortifruti.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/limpeza.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/Login.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/logo-alpha.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/logo-alpha2.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/logo.png">
+      <publishTime>05/24/2014 13:32:56</publishTime>
+    </File>
+    <File Include="Imagens/mastercard.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/menu.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/MinhaConta.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/pescados.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/sprite.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/Thumbs.db">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Imagens/visa.png">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>05/24/2014 00:44:59</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Scripts/index.js">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Scripts/respond.js">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Views/Conta/Cadastrar.cshtml">
+      <publishTime>05/24/2014 08:38:39</publishTime>
+    </File>
+    <File Include="Views/Conta/DadosCadastrais.cshtml">
+      <publishTime>05/24/2014 09:08:01</publishTime>
+    </File>
+    <File Include="Views/Conta/DetalhesPedido.cshtml">
+      <publishTime>05/24/2014 12:49:09</publishTime>
+    </File>
+    <File Include="Views/Conta/Finalizar.cshtml">
+      <publishTime>05/24/2014 10:16:28</publishTime>
+    </File>
+    <File Include="Views/Conta/FinalizarCompra.cshtml">
+      <publishTime>05/24/2014 08:52:04</publishTime>
+    </File>
+    <File Include="Views/Conta/Index.cshtml">
+      <publishTime>05/24/2014 09:04:33</publishTime>
+    </File>
+    <File Include="Views/Conta/MeusPedidos.cshtml">
+      <publishTime>05/24/2014 12:43:35</publishTime>
+    </File>
+    <File Include="Views/Endereco/Adicionar.cshtml">
+      <publishTime>05/24/2014 09:01:39</publishTime>
+    </File>
+    <File Include="Views/Endereco/Editar.cshtml">
+      <publishTime>05/24/2014 08:58:58</publishTime>
+    </File>
+    <File Include="Views/Endereco/Index.cshtml">
+      <publishTime>05/24/2014 08:56:13</publishTime>
+    </File>
+    <File Include="Views/Home/Carrinho.cshtml">
+      <publishTime>05/24/2014 09:02:26</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>05/24/2014 13:48:13</publishTime>
+    </File>
+    <File Include="Views/Home/Login.cshtml">
+      <publishTime>05/24/2014 08:26:08</publishTime>
+    </File>
+    <File Include="Views/Home/Pesquisa.cshtml">
+      <publishTime>05/24/2014 13:41:19</publishTime>
+    </File>
+    <File Include="Views/Home/Produto.cshtml">
+      <publishTime>05/24/2014 12:28:19</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>05/24/2014 13:37:22</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutPaginasInternas.cshtml">
+      <publishTime>05/24/2014 13:34:13</publishTime>
+    </File>
+    <File Include="Views/Shared/_ListaProdutos.cshtml">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>05/24/2014 00:44:58</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>05/24/2014 00:44:59</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>05/24/2014 14:05:29</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

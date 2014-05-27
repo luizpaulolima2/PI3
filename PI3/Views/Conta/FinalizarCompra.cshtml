@@ -1,92 +1,102 @@
 ﻿@using PI3.Database
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutPaginasInternas.cshtml";
     List<Produto> carrinho = ViewBag.carrinho;
 }
 <link href="~/Content/bootstrap2.css" rel="stylesheet" />
-<h2 class="page-header">Finalizar compra</h2>
-@using (Html.BeginForm("Finalizar", "Conta", FormMethod.Post, new { role = "form", @class = "col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 " }))
-{
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title"><b>1 - Revise os itens</b></h3>
+
+
+    <h2 class="page-header col-md-8 col-md-offset-2" style="text-align:center;">Finalizar compra</h2>
+    @using (Html.BeginForm("Finalizar", "Conta", FormMethod.Post, new { role = "form", @class = "col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 " }))
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><b>1 - Revise os itens</b></h3>
+            </div>
+            <div class="panel-body">
+                @Html.Partial("_ListaProdutos", carrinho)
+            </div>
         </div>
-        <div class="panel-body">
-            @Html.Partial("_ListaProdutos", carrinho)
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><b>2 - Escolha o endereço de entrega</b></h3>
+            </div>
+            <div class="panel-body">
+                <table>
+                    <tr>
+                        <td>
+                            @Html.DropDownList("endereco", (List<SelectListItem>)ViewBag.enderecos, new { required = "" })
+                        </td>
+                        <td>
+                            OU
+                        </td>
+                        <td>
+                            <a class="btn btn-warning" href="@Url.Action("Index", "Endereco")">Cadastrar/Editar um endereço</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title"><b>2 - Escolha o endereço de entrega</b></h3>
-        </div>
-        <div class="panel-body">
-            <table>
-                <tr>
-                    <td>
-                        @Html.DropDownList("endereco", (List<SelectListItem>)ViewBag.enderecos, new { required = "" })
-                    </td>
-                    <td>
-                        OU
-                    </td>
-                    <td>
-                        <a class="btn btn-warning" href="@Url.Action("Index", "Endereco")">Cadastrar/Editar um endereço</a>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title"><b>3 - Escolha uma forma de pagamento e preencha os dados solicitados</b></h3>
-        </div>
-        <div class="panel-body">
-            Forma de Pagamento: @Html.DropDownList("pagamento", (List<SelectListItem>)ViewBag.pagamentos, new { required = "" })
-            <br />
-            <br />
-            <div id="cartaoCredito">
-                <div>
-                    Nome igual ao cartão<input name="nomeCartaoCredito" type="text" required class="form-control" />
-                </div>
-                <div>
-                    Número do cartão<input name="numeroCartaoCredito" maxlength="16" type="text" required class="form-control" />
-                </div>
-                <div>
-                    Código<input name="codigoCartaoCredito" type="text" maxlength="3" required class="form-control" />
-                </div>
-                <div>
-                    Validade
-                    <select>
-                        <option>01</option>
-                        <option>02</option>
-                        <option>03</option>
-                        <option>04</option>
-                        <option>05</option>
-                        <option>06</option>
-                        <option>07</option>
-                        <option>08</option>
-                        <option>09</option>
-                        <option>10</option>
-                        <option>11</option>
-                        <option>12</option>
-                    </select>
-                    /
-                    <select>
-                        <option>2014</option>
-                        <option>2015</option>
-                        <option>2016</option>
-                        <option>2017</option>
-                        <option>2018</option>
-                    </select>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><b>3 - Escolha uma forma de pagamento e preencha os dados solicitados</b></h3>
+            </div>
+            <div class="panel-body">
+                Forma de Pagamento: @Html.DropDownList("pagamento", (List<SelectListItem>)ViewBag.pagamentos, new { required = "" })
+                <br />
+                <br />
+                <div id="cartaoCredito">
+                    <div>
+                        Nome igual ao cartão<input name="nomeCartaoCredito" type="text" required class="form-control" />
+                    </div>
+                    <div>
+                        Número do cartão<input name="numeroCartaoCredito" maxlength="16" type="text" required class="form-control" />
+                    </div>
+                    <div>
+                        Código<input name="codigoCartaoCredito" type="text" maxlength="3" required class="form-control" />
+                    </div>
+                    <div>
+                        Validade
+                        <select>
+                            <option>01</option>
+                            <option>02</option>
+                            <option>03</option>
+                            <option>04</option>
+                            <option>05</option>
+                            <option>06</option>
+                            <option>07</option>
+                            <option>08</option>
+                            <option>09</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                        </select>
+                        /
+                        <select>
+                            <option>2014</option>
+                            <option>2015</option>
+                            <option>2016</option>
+                            <option>2017</option>
+                            <option>2018</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title"><b>4 - Confirmar a compra</b></h3>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><b>4 - Confirmar a compra</b></h3>
+            </div>
+            <div class="panel-body" style="text-align:center">
+                <input type="submit" value="Confirmar compra !" class="btn btn-success" />
+            </div>
         </div>
-        <div class="panel-body" style="text-align:center">
-            <input type="submit" value="Confirmar compra !" class="btn btn-success" />
-        </div>
-    </div>
-}
+        
+        <style>
+
+            .form-control{
+                margin-bottom:0.5em;
+            }
+        </style>
+     
+    }

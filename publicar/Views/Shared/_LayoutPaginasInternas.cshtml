@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href='http://fonts.googleapis.com/css?family=IM+Fell+English:400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans:100,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+    <title>@ViewBag.Title - Alpha Supermarket</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    <link href="~/Content/fancybox/jquery.fancybox.css" rel="stylesheet" />
+    <script src="~/Content/fancybox/jquery.fancybox.js"></script>
+    <link rel='shortcut icon' href="~/Imagens/logo.png" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <!-- menu topo do site -->
+            <nav>
+                <ul>
+                    <li>
+                        <a href="@Url.Action("Index", "Conta")">
+                            <img src="~/Imagens/MinhaConta.png" alt="">
+                            <span>Minha conta</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Carrinho", "Home")">
+                            <img src="~/Imagens/Carrinho.png" alt="">
+                            <span>Visualizar Carrinho</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("FinalizarCompra", "Conta")">
+                            <img src="~/Imagens/FinalizarCompra.png" alt="">
+                            <span> Finalizar Compra </span>
+                        </a>
+                    </li>
+                    <li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="@Url.Action("Logout", "Home")">
+                                <img src="~/Imagens/login.png" alt="">
+                                <span>Logout</span>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Login", "Home")">
+                                <img src="~/Imagens/login.png" alt="">
+                                <span>login / Cadastrar-se</span>
+                            </a>
+                        }
+                    </li>
+                </ul>
+            </nav>
+            <!-- div que contem carrinho -->
+            <div class="nav-cart">
+                <div class="logo">
+                    <a href="~/Home/Index"><img src="~/Imagens/logo-alpha.png" alt=""></a>
+                </div>
+
+               
+            </div>
+            <!-- fim header -->
+        </header>
+        
+        @RenderBody()
+
+
+        <footer>
+            <div class="footer">
+                <div class="newsletter">
+                    <form>
+                        <label>Assine nossa <br> newsletter</label>
+                        <input class="form-control" type="text" placeholder="exemplo@gmail.com">
+                        <input class="envelope btn btn-default" value=" " type="button">
+                    </form>
+                </div>
+                <div class="information">
+                    <ul>
+                        <li>Fale conosco</li>
+                        <li>(11) 9-8248-8408</li>
+                        <li>(11) 9-8248-8408</li>
+                        <li>contato@alpha.com.br</li>
+                        <li>contato2@alpha.com.br</li>
+                    </ul>
+                    <ul>
+                        <li>Informaçõas</li>
+                        <li>Empresa</li>
+                        <li>Politica de privacidade</li>
+                        <li>Termos de troca e devolução</li>
+                        <li>Informações sobre fretes</li>
+                        <li>Mapa da loja</li>
+                    </ul>
+                </div>
+                <div class="forma-de-pagamento">
+                    <p>Forma de pagamento</p>
+                    <ul>
+                        <li><div class="mastercard" title="mastercard"></div></li>
+                        <li><div class="visa" title="visa"></div></li>
+                        <li><div class="amex" title="amex"></div></li>
+                    </ul>
+                </div>
+            </div><!-- fim div footer -->
+        </footer>
+        <!-- fim container -->
+    </div>
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+<script>
+	// carrega sempre o carrinho
+	carregarCarrinho(0, 0);
+
+	function carregarCarrinho(id, qtd) {
+		$.post('@Url.Action("InsereProdutoCarrinho", "Home")',
+			{
+				produtoId: id,
+				quantidade: qtd
+			},
+			function (data) {
+				var totalProdutos = data.totalProdutos;
+				var valorTotal = data.valorTotal;
+				var texto = totalProdutos + ' Iten(s) - $' + valorTotal;
+				$(".carrinho2 p.itens").html(texto);
+			}
+		);
+	}
+</script>

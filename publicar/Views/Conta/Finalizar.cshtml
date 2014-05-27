@@ -1,0 +1,23 @@
+﻿@{
+   Layout = "~/Views/Shared/_LayoutPaginasInternas.cshtml";
+}
+<link href="~/Content/bootstrap2.css" rel="stylesheet" />
+<div class="col-md-8 col-md-offset-2" style="min-height:400px;">
+    @if (TempData["erro"] != null)
+    {
+        <blockquote>
+            <h4>Erro</h4>
+            <p>@TempData["erro"]</p>
+        </blockquote>
+    }
+    @if (TempData["mensagem"] != null)
+    {
+        <div class="bs-callout bs-callout-info">
+            <h4>Parabéns !</h4>
+            <p>@Html.Raw(TempData["mensagem"])</p>
+        </div>
+    }
+</div>
+<div>
+    <a class="btn btn-default" style="margin-top:1.5em;" href="@Url.Action("Index", "Home")">Voltar para a Home</a>
+</div>

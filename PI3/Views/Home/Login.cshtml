@@ -1,28 +1,28 @@
 ﻿@using PI3.Controllers
 @{
 	ViewBag.Title = "Login";
-	Layout = null;
+    Layout = "~/Views/Shared/_LayoutPaginasInternas.cshtml";
 }
 <link href="~/Content/bootstrap2.css" rel="stylesheet" />
-<table>
-	<tr>
-		<td>
+<table style="min-height:400px;" class="col-md-8 col-md-offset-3" >
+	<tr class="col-md-12">
+		<td class="col-md-5">
 			<h2>Login</h2>
 			@using (Html.BeginForm("Login", "Home", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new { role = "form" }))
 			{
-				<input type="text" name="usuario" class="form-control" required />
-				<input type="password" name="senha" class="form-control" required />
-				<input type="submit" name="logar" value="logar" class="btn btn-default" />
+				<input type="text" name="usuario" class="form-control" required style="margin-bottom:0.5em;" />
+    <input type="password" name="senha" class="form-control" required style="margin-bottom:0.5em;" />
+    <input type="submit" name="logar" value="logar" class="btn btn-default col-md-4" style="margin-bottom:0.5em; float:right;" />
 				<br />
 				@Html.ValidationSummary()
 			}
 		</td>
-		<td>
+		<td class="col-md-1">
 			<h1>OU</h1>
 		</td>
-		<td>
+		<td class="col-md-6">
 			<h2>Cadastre-se</h2>
-			@Html.ActionLink("Cadastar", "Cadastrar", "Conta", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, new { @class = "btn btn-default" })
+			@Html.ActionLink("Cadastar", "Cadastrar", "Conta", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, new { @class = "btn btn-default col-md-6" })
 		</td>
 	</tr>
 </table>

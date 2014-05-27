@@ -2,7 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <link href='http://fonts.googleapis.com/css?family=IM+Fell+English:400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans:100,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
     <title>@ViewBag.Title - Alpha Supermarket</title>
+    <link rel='shortcut icon' href="~/Imagens/logo.png" />
+
     @Styles.Render("~/Content/css")
 </head>
 <body>
@@ -24,7 +29,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("FinalizarCompra", "Conta")">
+                        <a href="@Url.Action("Carrinho", "Home")">
                             <img src="~/Imagens/FinalizarCompra.png" alt="">
                             <span> Finalizar Compra </span>
                         </a>
@@ -52,14 +57,16 @@
                 <div class="logo">
                     <a href="~/Home/Index"><img src="~/Imagens/logo-alpha.png" alt=""></a>
                 </div>
-                <a href="#">
-                    <div class="carrinho2">
+                
+                    <div class="carrinho2" style="overflow:hidden;">
                         <img src="~/Imagens/carrinhoCompras.png" alt="">
                         <p>Carrinho</p>
                         <p class="itens">0 Iten(s) - $0,00</p>
                         <div class="seta-baixo"></div>
+
+                        <button class="btn btn-primary col-md-10 col-md-offset-1" style="margin-top:1.5em;"><a href="~/Home/Carrinho" style="color:white">Visualizar Carrinho</a></button>
                     </div>
-                </a>
+                
             </div>
             <!-- fim header -->
         </header>
@@ -72,7 +79,7 @@
                 <li class="Doces"><a href="@Url.Action("Pesquisa", "Home", new { categoria = 5 })" title="doces"><div class="doces"></div><p>Padaria</p></a></li>
                 <li class="Pescados"><a href="@Url.Action("Pesquisa", "Home", new { categoria = 1 })" title="pescados"><div class="pescados"></div><p>Limpeza</p></a></li>
                 <li class="Congelados"><a href="@Url.Action("Pesquisa", "Home", new { categoria = 3 })" title="congelados"><div class="congelados"></div><p>Frios e laticinios</p></a></li>
-                <li class="Default"><a href="@Url.Action("Pesquisa", "Home")" title="default"><div class="default"></div><p>Mais categorias</p></a></li>
+                <li class="Default"><a href="@Url.Action("Pesquisa", "Home", new { categoria = "todos"})" title="default"><div class="default"></div><p>Todos Produtos</p></a></li>
             </ul>
         </nav>
         <article style="margin-bottom: 0; height: 30px;">
@@ -87,60 +94,48 @@
 
         @RenderBody()
 
-        <aside>
+
+        <aside style="margin-bottom:3em; cursor:pointer;">
             <!-- lista ofertas da semana -->
             <div class="offers">Ofertas</div>
             <ul class="sale">
                 <li>
-                    <a href="#">
-                        <div class="product-img"><img src="~/imagens/0.jpg" alt="imagem produto"></div>
+                    <a  onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = 1 })'">
+                        <div class="product-img"><img src="@Url.Content("~/Imagens/01.jpg")"></div>
                         <p class="product-name">ESTRELLA GALICIA</p>
                         <p class="product-detail">Garrafa 200ml</p>
                         <p class="product-price">Por: R$2,15</p>
-                    </a>
-                    <div class="product-hover">
-                        <button class="btn btn-primary see-more">Veja mais</button>
-                        <button class="btn  btn-success add-card">Add  ao carrinho</button>
-                    </div>
+                    </a>                   
                 </li>
                 <li>
-                    <a href="#">
-                        <div class="product-img"><img src="~/imagens/0.jpg" alt="imagem produto"></div>
+                    <a onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = 7 })'">
+                        <div class="product-img"><img src="@Url.Content("~/Imagens/02.jpg")" /> </div>
                         <p class="product-name">ESTRELLA GALICIA</p>
                         <p class="product-detail">Garrafa 200ml</p>
                         <p class="product-price">Por: R$2,15</p>
                     </a>
-                    <div class="product-hover">
-                        <button class="btn btn-primary see-more">Veja mais</button>
-                        <button class="btn  btn-success add-card">Add  ao carrinho</button>
-                    </div>
                 </li>
                 <li>
-                    <a href="#">
-                        <div class="product-img"><img src="~/imagens/0.jpg" alt="imagem produto"></div>
+                    <a onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = 2 })'">
+                        <div class="product-img"><img src="@Url.Content("~/Imagens/03.jpg")"></div>
                         <p class="product-name">ESTRELLA GALICIA</p>
                         <p class="product-detail">Garrafa 200ml</p>
                         <p class="product-price">Por: R$2,15</p>
                     </a>
-                    <div class="product-hover">
-                        <button class="btn btn-primary see-more">Veja mais</button>
-                        <button class="btn  btn-success add-card">Add  ao carrinho</button>
-                    </div>
+                  
                 </li>
                 <li>
-                    <a href="#">
-                        <div class="product-img"><img src="~/imagens/0.jpg" alt="imagem produto"></div>
+                    <a onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = 17 })'">
+                        <div class="product-img"><img src="@Url.Content("~/Imagens/04.jpg")"></div>
                         <p class="product-name">ESTRELLA GALICIA</p>
                         <p class="product-detail">Garrafa 200ml</p>
                         <p class="product-price">Por: R$2,15</p>
-                    </a>
-                    <div class="product-hover">
-                        <button class="btn btn-primary see-more">Veja mais</button>
-                        <button class="btn  btn-success add-card">Add  ao carrinho</button>
-                    </div>
+                    </a>                  
                 </li>
             </ul>
-        </aside>
+        </aside >
+
+        
         <footer>
             <div class="footer">
                 <div class="newsletter">
@@ -160,11 +155,11 @@
                     </ul>
                     <ul>
                         <li>Informaçõas</li>
-                        <li><a href="#">Empresa</a></li>
-                        <li><a href="#">Politica de privacidade</a></li>
-                        <li><a href="#">Termos de troca e devolução</a></li>
-                        <li><a href="#">Informações sobre fretes</a></li>
-                        <li><a href="#">Mapa da loja</a></li>
+                        <li>Empresa</li>
+                        <li>Politica de privacidade</li>
+                        <li>Termos de troca e devolução</li>
+                        <li>Informações sobre fretes</li>
+                        <li>Mapa da loja</li>
                     </ul>
                 </div>
                 <div class="forma-de-pagamento">

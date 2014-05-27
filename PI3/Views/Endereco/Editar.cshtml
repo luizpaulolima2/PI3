@@ -1,10 +1,10 @@
 ﻿@model PI3.Database.Endereco
 @{
-	Layout = null;
+    Layout = "~/Views/Shared/_LayoutPaginasInternas.cshtml";
 }
 
 <link href="~/Content/bootstrap2.css" rel="stylesheet" />
-<h2 class="page-header">Editar endereço</h2>
+<h2 class="page-header col-md-8 col-md-offset-2" style="text-align:center;" > Editar endereço</h2>
 
 @using (Html.BeginForm("Editar", "Endereco", FormMethod.Post, new { role = "form", @class = "col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 " }))
 {
@@ -40,6 +40,13 @@
 		País*@Html.TextBoxFor(m => m.paisEndereco, new { @class = "form-control", required = "", @type = "text" })
 	</div>
 	<div>
-		<input type="submit" value="Finalizar edições" class="btn btn-success" />
+		<input type="submit" value="Finalizar edições" class="btn btn-success" style="margin-bottom:2em; float:right"/>
 	</div>
 }
+
+<style>
+
+    .form-control{
+        margin-bottom:0.5em;
+    }
+</style>

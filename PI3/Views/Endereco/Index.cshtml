@@ -1,29 +1,33 @@
 ﻿@model List<PI3.Database.Endereco>
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutPaginasInternas.cshtml";
     int i = 1;
 }
 <link href="~/Content/bootstrap2.css" rel="stylesheet" />
-<h2 class="page-header">Endereços</h2>
-<p id="mensagem">@TempData["mensagem"]</p>
-<a class="btn btn-primary" href="@Url.Action("Adicionar", "Endereco")">Adicionar endereço</a>
-<br /><br />
-@foreach (var endereco in Model)
-{
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">#@i - @endereco.nomeEndereco</h3>
+
+
+<div class="col-md-8 col-md-offset-2" style="min-height:400px; text-align:center;" >
+    <h2 class="page-header">Endereços</h2>
+    <p id="mensagem">@TempData["mensagem"]</p>
+    <a class="btn btn-primary" href="@Url.Action("Adicionar", "Endereco")">Adicionar endereço</a>
+    <br /><br />
+    @foreach (var endereco in Model)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">#@i - @endereco.nomeEndereco</h3>
+            </div>
+            <div class="panel-body">
+                @endereco.CEPEndereco
+                <br />
+                @endereco.logradouroEndereco, @endereco.numeroEndereco - @endereco.complementoEndereco
+                <br />
+                @endereco.cidadeEndereco - @endereco.paisEndereco
+                <br />
+                <a href="@Url.Action("Editar", "Endereco", new { id = endereco.idEndereco })" class="btn btn-warning">Editar</a>
+                <a href="@Url.Action("Excluir", "Endereco", new { id = endereco.idEndereco })" class="btn btn-danger">Excluir</a>
+            </div>
         </div>
-        <div class="panel-body">
-            @endereco.CEPEndereco
-            <br />
-            @endereco.logradouroEndereco, @endereco.numeroEndereco - @endereco.complementoEndereco
-            <br />
-            @endereco.cidadeEndereco - @endereco.paisEndereco
-            <br />
-            <a href="@Url.Action("Editar", "Endereco", new { id = endereco.idEndereco })" class="btn btn-warning">Editar</a>
-            <a href="@Url.Action("Excluir", "Endereco", new { id = endereco.idEndereco })" class="btn btn-danger">Excluir</a>
-        </div>
-    </div>
-    i++;
-}
+        i++;
+    }
+</div>

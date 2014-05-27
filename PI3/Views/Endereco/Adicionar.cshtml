@@ -1,10 +1,10 @@
 ﻿@model PI3.Database.Endereco
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutPaginasInternas.cshtml";
 }
 
 <link href="~/Content/bootstrap2.css" rel="stylesheet" />
-<h2 class="page-header">Adicionar endereço</h2>
+<h2 class="page-header col-md-8 col-md-offset-2" style="text-align:center;">Adicionar endereço</h2>
 
 @using (Html.BeginForm("Adicionar", "Endereco", FormMethod.Post, new { role = "form", @class = "col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 " }))
 {
@@ -28,7 +28,7 @@
         Número*@Html.TextBoxFor(m => m.numeroEndereco, new { @class = "form-control", required = "", @type = "text" })
     </div>
     <div>
-        Complemento*@Html.TextBoxFor(m => m.complementoEndereco, new { @class = "form-control", required = "", @type = "text" })
+        Complemento*@Html.TextBoxFor(m => m.complementoEndereco, new { @class = "form-control", @type = "text" })
     </div>
     <div>
         Cidade*@Html.TextBoxFor(m => m.cidadeEndereco, new { @class = "form-control", required = "", @type = "text" })
@@ -40,6 +40,11 @@
         País*@Html.TextBoxFor(m => m.paisEndereco, new { @class = "form-control", required = "", @type = "text" })
     </div>
     <div>
-        <input type="submit" value="Adicionar" class="btn btn-default" />
+        <input type="submit" value="Adicionar" class="btn btn-default" style="margin-bottom:2em; float:right" />
     </div>
 }
+<style>
+    .form-control {
+        margin-bottom: 0.5em;
+    }
+</style>

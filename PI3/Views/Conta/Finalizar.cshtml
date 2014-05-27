@@ -1,8 +1,8 @@
 ﻿@{
-    Layout = null;
+   Layout = "~/Views/Shared/_LayoutPaginasInternas.cshtml";
 }
 <link href="~/Content/bootstrap2.css" rel="stylesheet" />
-<div>
+<div class="col-md-8 col-md-offset-2" style="min-height:400px;">
     @if (TempData["erro"] != null)
     {
         <blockquote>
@@ -19,5 +19,5 @@
     }
 </div>
 <div>
-    <a class="btn btn-default" href="@Url.Action("Index", "Home")">Voltar para a Home</a>
+    <a class="btn btn-default" style="margin-top:1.5em;" href="@Url.Action("Index", "Home")">Voltar para a Home</a>
 </div>

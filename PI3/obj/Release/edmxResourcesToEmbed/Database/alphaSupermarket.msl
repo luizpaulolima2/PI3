@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="alphasupermarketModelStoreContainer" CdmEntityContainer="alphasupermarketEntities">
+    <EntitySetMapping Name="Categoria">
+      <EntityTypeMapping TypeName="alphasupermarketModel.Categoria">
+        <MappingFragment StoreEntitySet="Categoria">
+          <ScalarProperty Name="descCategoria" ColumnName="descCategoria" />
+          <ScalarProperty Name="nomeCategoria" ColumnName="nomeCategoria" />
+          <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="alphasupermarketModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="recebeNewsLetter" ColumnName="recebeNewsLetter" />
+          <ScalarProperty Name="dtNascCliente" ColumnName="dtNascCliente" />
+          <ScalarProperty Name="telResidencialCliente" ColumnName="telResidencialCliente" />
+          <ScalarProperty Name="telComercialCliente" ColumnName="telComercialCliente" />
+          <ScalarProperty Name="celularCliente" ColumnName="celularCliente" />
+          <ScalarProperty Name="CPFCliente" ColumnName="CPFCliente" />
+          <ScalarProperty Name="senhaCliente" ColumnName="senhaCliente" />
+          <ScalarProperty Name="emailCliente" ColumnName="emailCliente" />
+          <ScalarProperty Name="nomeCompletoCliente" ColumnName="nomeCompletoCliente" />
+          <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Endereco">
+      <EntityTypeMapping TypeName="alphasupermarketModel.Endereco">
+        <MappingFragment StoreEntitySet="Endereco">
+          <ScalarProperty Name="UFEndereco" ColumnName="UFEndereco" />
+          <ScalarProperty Name="paisEndereco" ColumnName="paisEndereco" />
+          <ScalarProperty Name="cidadeEndereco" ColumnName="cidadeEndereco" />
+          <ScalarProperty Name="complementoEndereco" ColumnName="complementoEndereco" />
+          <ScalarProperty Name="CEPEndereco" ColumnName="CEPEndereco" />
+          <ScalarProperty Name="numeroEndereco" ColumnName="numeroEndereco" />
+          <ScalarProperty Name="logradouroEndereco" ColumnName="logradouroEndereco" />
+          <ScalarProperty Name="nomeEndereco" ColumnName="nomeEndereco" />
+          <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+          <ScalarProperty Name="idEndereco" ColumnName="idEndereco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estoque">
+      <EntityTypeMapping TypeName="alphasupermarketModel.Estoque">
+        <MappingFragment StoreEntitySet="Estoque">
+          <ScalarProperty Name="qtdProdutoDisponivel" ColumnName="qtdProdutoDisponivel" />
+          <ScalarProperty Name="idProduto" ColumnName="idProduto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemPedido">
+      <EntityTypeMapping TypeName="alphasupermarketModel.ItemPedido">
+        <MappingFragment StoreEntitySet="ItemPedido">
+          <ScalarProperty Name="precoVendaItem" ColumnName="precoVendaItem" />
+          <ScalarProperty Name="qtdProduto" ColumnName="qtdProduto" />
+          <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+          <ScalarProperty Name="idProduto" ColumnName="idProduto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pedido">
+      <EntityTypeMapping TypeName="alphasupermarketModel.Pedido">
+        <MappingFragment StoreEntitySet="Pedido">
+          <ScalarProperty Name="idEndereco" ColumnName="idEndereco" />
+          <ScalarProperty Name="idTipoPagto" ColumnName="idTipoPagto" />
+          <ScalarProperty Name="dataPedido" ColumnName="dataPedido" />
+          <ScalarProperty Name="idStatus" ColumnName="idStatus" />
+          <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+          <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Produto">
+      <EntityTypeMapping TypeName="alphasupermarketModel.Produto">
+        <MappingFragment StoreEntitySet="Produto">
+          <ScalarProperty Name="imagem" ColumnName="imagem" />
+          <ScalarProperty Name="qtdMinEstoque" ColumnName="qtdMinEstoque" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="ativoProduto" ColumnName="ativoProduto" />
+          <ScalarProperty Name="imagemProduto" ColumnName="imagemProduto" />
+          <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+          <ScalarProperty Name="descontoPromocao" ColumnName="descontoPromocao" />
+          <ScalarProperty Name="precProduto" ColumnName="precProduto" />
+          <ScalarProperty Name="descProduto" ColumnName="descProduto" />
+          <ScalarProperty Name="nomeProduto" ColumnName="nomeProduto" />
+          <ScalarProperty Name="idProduto" ColumnName="idProduto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StatusPedido">
+      <EntityTypeMapping TypeName="alphasupermarketModel.StatusPedido">
+        <MappingFragment StoreEntitySet="StatusPedido">
+          <ScalarProperty Name="descStatus" ColumnName="descStatus" />
+          <ScalarProperty Name="idStatus" ColumnName="idStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoPagamento">
+      <EntityTypeMapping TypeName="alphasupermarketModel.TipoPagamento">
+        <MappingFragment StoreEntitySet="TipoPagamento">
+          <ScalarProperty Name="descTipoPagto" ColumnName="descTipoPagto" />
+          <ScalarProperty Name="idTipoPagto" ColumnName="idTipoPagto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="alphasupermarketModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="usuarioAtivo" ColumnName="usuarioAtivo" />
+          <ScalarProperty Name="tipoPerfil" ColumnName="tipoPerfil" />
+          <ScalarProperty Name="nomeUsuario" ColumnName="nomeUsuario" />
+          <ScalarProperty Name="senhaUsuario" ColumnName="senhaUsuario" />
+          <ScalarProperty Name="loginUsuario" ColumnName="loginUsuario" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

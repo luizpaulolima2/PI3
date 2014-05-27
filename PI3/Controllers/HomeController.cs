@@ -16,7 +16,7 @@ namespace PI3.Controllers
             return View();
         }
 
-        public ActionResult Pesquisa(int? categoria, string termo)
+        public ActionResult Pesquisa(string categoria, string termo)
         {
             using (var db = new alphasupermarketEntities())
             {
@@ -24,9 +24,17 @@ namespace PI3.Controllers
 
                 List<Produto> lista = new List<Produto>();
 
-                if (categoria.HasValue)
+                if (!String.IsNullOrEmpty(categoria))
                 {
-                    lista = db.Produto.Where(p => p.idCategoria == categoria.Value).ToList();
+                    if (categoria == "todos")
+                    {
+                        lista = db.Produto.Where(p => p.ativoProduto == "1").OrderBy(p => p.nomeProduto).ToList();
+                    }
+                    else
+                    {
+                        int id = int.Parse(categoria);
+                        lista = db.Produto.Where(p => p.idCategoria == id).ToList();
+                    }
                 }
                 else
                 {

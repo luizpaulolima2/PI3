@@ -1,0 +1,46 @@
+﻿@model List<PI3.Database.Produto>
+<table class="table">
+    <thead>
+        <tr>
+            <td>
+                Produto
+            </td>
+            <td>
+                Valor
+            </td>
+            <td>
+                Quantidade
+            </td>
+            <td>
+
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var produto in Model.Distinct())
+        {
+            int qtdProduto = Model.Count(m => m.idProduto == produto.idProduto);
+            <tr>
+                <td>
+                    @produto.nomeProduto
+                </td>
+                <td>
+                    @produto.precProduto.ToString("n2")
+                </td>
+                <td>
+                    @qtdProduto
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr class="warning">
+            <td colspan="3" align="right">
+                <b>TOTAL</b>
+            </td>
+            <td>
+                <b>$@Model.Sum(m => m.precProduto).ToString("n2")</b>
+            </td>
+        </tr>
+    </tfoot>
+</table>

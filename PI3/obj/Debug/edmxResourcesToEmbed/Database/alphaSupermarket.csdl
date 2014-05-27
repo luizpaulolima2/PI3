@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="alphasupermarketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="alphasupermarketEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categoria" EntityType="alphasupermarketModel.Categoria" />
+    <EntitySet Name="Cliente" EntityType="alphasupermarketModel.Cliente" />
+    <EntitySet Name="Endereco" EntityType="alphasupermarketModel.Endereco" />
+    <EntitySet Name="Estoque" EntityType="alphasupermarketModel.Estoque" />
+    <EntitySet Name="ItemPedido" EntityType="alphasupermarketModel.ItemPedido" />
+    <EntitySet Name="Pedido" EntityType="alphasupermarketModel.Pedido" />
+    <EntitySet Name="Produto" EntityType="alphasupermarketModel.Produto" />
+    <EntitySet Name="StatusPedido" EntityType="alphasupermarketModel.StatusPedido" />
+    <EntitySet Name="TipoPagamento" EntityType="alphasupermarketModel.TipoPagamento" />
+    <EntitySet Name="Usuario" EntityType="alphasupermarketModel.Usuario" />
+    <AssociationSet Name="FK_Produto_Categoria" Association="alphasupermarketModel.FK_Produto_Categoria">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Produto" EntitySet="Produto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Endereco_Cliente" Association="alphasupermarketModel.FK_Endereco_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Endereco" EntitySet="Endereco" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pedido_Cliente" Association="alphasupermarketModel.FK_Pedido_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Pedido" EntitySet="Pedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pedido_Endereco" Association="alphasupermarketModel.FK_Pedido_Endereco">
+      <End Role="Endereco" EntitySet="Endereco" />
+      <End Role="Pedido" EntitySet="Pedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estoque_Produto" Association="alphasupermarketModel.FK_Estoque_Produto">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="Estoque" EntitySet="Estoque" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProdutoPedido_Pedido" Association="alphasupermarketModel.FK_ProdutoPedido_Pedido">
+      <End Role="Pedido" EntitySet="Pedido" />
+      <End Role="ItemPedido" EntitySet="ItemPedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProdutoPedido_Produto" Association="alphasupermarketModel.FK_ProdutoPedido_Produto">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="ItemPedido" EntitySet="ItemPedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pedido_Status" Association="alphasupermarketModel.FK_Pedido_Status">
+      <End Role="StatusPedido" EntitySet="StatusPedido" />
+      <End Role="Pedido" EntitySet="Pedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pedido_TipoPagamento" Association="alphasupermarketModel.FK_Pedido_TipoPagamento">
+      <End Role="TipoPagamento" EntitySet="TipoPagamento" />
+      <End Role="Pedido" EntitySet="Pedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Produto_Usuario" Association="alphasupermarketModel.FK_Produto_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Produto" EntitySet="Produto" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="idCategoria" />
+    </Key>
+    <Property Name="idCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nomeCategoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="descCategoria" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Produto" Relationship="alphasupermarketModel.FK_Produto_Categoria" FromRole="Categoria" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="idCliente" />
+    </Key>
+    <Property Name="idCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nomeCompletoCliente" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="emailCliente" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="senhaCliente" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="CPFCliente" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
+    <Property Name="celularCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="telComercialCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="telResidencialCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="dtNascCliente" Type="DateTime" Precision="0" />
+    <Property Name="recebeNewsLetter" Type="Boolean" />
+    <NavigationProperty Name="Endereco" Relationship="alphasupermarketModel.FK_Endereco_Cliente" FromRole="Cliente" ToRole="Endereco" />
+    <NavigationProperty Name="Pedido" Relationship="alphasupermarketModel.FK_Pedido_Cliente" FromRole="Cliente" ToRole="Pedido" />
+  </EntityType>
+  <EntityType Name="Endereco">
+    <Key>
+      <PropertyRef Name="idEndereco" />
+    </Key>
+    <Property Name="idEndereco" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCliente" Type="Int32" Nullable="false" />
+    <Property Name="nomeEndereco" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="logradouroEndereco" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="numeroEndereco" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CEPEndereco" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
+    <Property Name="complementoEndereco" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="cidadeEndereco" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="paisEndereco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UFEndereco" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Cliente" Relationship="alphasupermarketModel.FK_Endereco_Cliente" FromRole="Endereco" ToRole="Cliente" />
+    <NavigationProperty Name="Pedido" Relationship="alphasupermarketModel.FK_Pedido_Endereco" FromRole="Endereco" ToRole="Pedido" />
+  </EntityType>
+  <EntityType Name="Estoque">
+    <Key>
+      <PropertyRef Name="idProduto" />
+    </Key>
+    <Property Name="idProduto" Type="Int32" Nullable="false" />
+    <Property Name="qtdProdutoDisponivel" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Produto" Relationship="alphasupermarketModel.FK_Estoque_Produto" FromRole="Estoque" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="ItemPedido">
+    <Key>
+      <PropertyRef Name="idProduto" />
+      <PropertyRef Name="idPedido" />
+    </Key>
+    <Property Name="idProduto" Type="Int32" Nullable="false" />
+    <Property Name="idPedido" Type="Int32" Nullable="false" />
+    <Property Name="qtdProduto" Type="Int16" Nullable="false" />
+    <Property Name="precoVendaItem" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <NavigationProperty Name="Pedido" Relationship="alphasupermarketModel.FK_ProdutoPedido_Pedido" FromRole="ItemPedido" ToRole="Pedido" />
+    <NavigationProperty Name="Produto" Relationship="alphasupermarketModel.FK_ProdutoPedido_Produto" FromRole="ItemPedido" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="Pedido">
+    <Key>
+      <PropertyRef Name="idPedido" />
+    </Key>
+    <Property Name="idPedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCliente" Type="Int32" Nullable="false" />
+    <Property Name="idStatus" Type="Byte" Nullable="false" />
+    <Property Name="dataPedido" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="idTipoPagto" Type="Byte" Nullable="false" />
+    <Property Name="idEndereco" Type="Int32" />
+    <NavigationProperty Name="Cliente" Relationship="alphasupermarketModel.FK_Pedido_Cliente" FromRole="Pedido" ToRole="Cliente" />
+    <NavigationProperty Name="Endereco" Relationship="alphasupermarketModel.FK_Pedido_Endereco" FromRole="Pedido" ToRole="Endereco" />
+    <NavigationProperty Name="ItemPedido" Relationship="alphasupermarketModel.FK_ProdutoPedido_Pedido" FromRole="Pedido" ToRole="ItemPedido" />
+    <NavigationProperty Name="StatusPedido" Relationship="alphasupermarketModel.FK_Pedido_Status" FromRole="Pedido" ToRole="StatusPedido" />
+    <NavigationProperty Name="TipoPagamento" Relationship="alphasupermarketModel.FK_Pedido_TipoPagamento" FromRole="Pedido" ToRole="TipoPagamento" />
+  </EntityType>
+  <EntityType Name="Produto">
+    <Key>
+      <PropertyRef Name="idProduto" />
+    </Key>
+    <Property Name="idProduto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nomeProduto" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="descProduto" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="precProduto" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="descontoPromocao" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="idCategoria" Type="Int32" Nullable="false" />
+    <Property Name="imagemProduto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ativoProduto" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="idUsuario" Type="Int32" />
+    <Property Name="qtdMinEstoque" Type="Int32" />
+    <Property Name="imagem" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Categoria" Relationship="alphasupermarketModel.FK_Produto_Categoria" FromRole="Produto" ToRole="Categoria" />
+    <NavigationProperty Name="Estoque" Relationship="alphasupermarketModel.FK_Estoque_Produto" FromRole="Produto" ToRole="Estoque" />
+    <NavigationProperty Name="ItemPedido" Relationship="alphasupermarketModel.FK_ProdutoPedido_Produto" FromRole="Produto" ToRole="ItemPedido" />
+    <NavigationProperty Name="Usuario" Relationship="alphasupermarketModel.FK_Produto_Usuario" FromRole="Produto" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="StatusPedido">
+    <Key>
+      <PropertyRef Name="idStatus" />
+    </Key>
+    <Property Name="idStatus" Type="Byte" Nullable="false" />
+    <Property Name="descStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Pedido" Relationship="alphasupermarketModel.FK_Pedido_Status" FromRole="StatusPedido" ToRole="Pedido" />
+  </EntityType>
+  <EntityType Name="TipoPagamento">
+    <Key>
+      <PropertyRef Name="idTipoPagto" />
+    </Key>
+    <Property Name="idTipoPagto" Type="Byte" Nullable="false" />
+    <Property Name="descTipoPagto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Pedido" Relationship="alphasupermarketModel.FK_Pedido_TipoPagamento" FromRole="TipoPagamento" ToRole="Pedido" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="loginUsuario" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="senhaUsuario" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="nomeUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tipoPerfil" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="usuarioAtivo" Type="Boolean" />
+    <NavigationProperty Name="Produto" Relationship="alphasupermarketModel.FK_Produto_Usuario" FromRole="Usuario" ToRole="Produto" />
+  </EntityType>
+  <Association Name="FK_Produto_Categoria">
+    <End Type="alphasupermarketModel.Categoria" Role="Categoria" Multiplicity="1" />
+    <End Type="alphasupermarketModel.Produto" Role="Produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="idCategoria" />
+      </Principal>
+      <Dependent Role="Produto">
+        <PropertyRef Name="idCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Endereco_Cliente">
+    <End Type="alphasupermarketModel.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="alphasupermarketModel.Endereco" Role="Endereco" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="Endereco">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pedido_Cliente">
+    <End Type="alphasupermarketModel.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="alphasupermarketModel.Pedido" Role="Pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="Pedido">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pedido_Endereco">
+    <End Type="alphasupermarketModel.Endereco" Role="Endereco" Multiplicity="0..1" />
+    <End Type="alphasupermarketModel.Pedido" Role="Pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Endereco">
+        <PropertyRef Name="idEndereco" />
+      </Principal>
+      <Dependent Role="Pedido">
+        <PropertyRef Name="idEndereco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Estoque_Produto">
+    <End Type="alphasupermarketModel.Produto" Role="Produto" Multiplicity="1" />
+    <End Type="alphasupermarketModel.Estoque" Role="Estoque" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="idProduto" />
+      </Principal>
+      <Dependent Role="Estoque">
+        <PropertyRef Name="idProduto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProdutoPedido_Pedido">
+    <End Type="alphasupermarketModel.Pedido" Role="Pedido" Multiplicity="1" />
+    <End Type="alphasupermarketModel.ItemPedido" Role="ItemPedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pedido">
+        <PropertyRef Name="idPedido" />
+      </Principal>
+      <Dependent Role="ItemPedido">
+        <PropertyRef Name="idPedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProdutoPedido_Produto">
+    <End Type="alphasupermarketModel.Produto" Role="Produto" Multiplicity="1" />
+    <End Type="alphasupermarketModel.ItemPedido" Role="ItemPedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="idProduto" />
+      </Principal>
+      <Dependent Role="ItemPedido">
+        <PropertyRef Name="idProduto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pedido_Status">
+    <End Type="alphasupermarketModel.StatusPedido" Role="StatusPedido" Multiplicity="1" />
+    <End Type="alphasupermarketModel.Pedido" Role="Pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusPedido">
+        <PropertyRef Name="idStatus" />
+      </Principal>
+      <Dependent Role="Pedido">
+        <PropertyRef Name="idStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pedido_TipoPagamento">
+    <End Type="alphasupermarketModel.TipoPagamento" Role="TipoPagamento" Multiplicity="1" />
+    <End Type="alphasupermarketModel.Pedido" Role="Pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoPagamento">
+        <PropertyRef Name="idTipoPagto" />
+      </Principal>
+      <Dependent Role="Pedido">
+        <PropertyRef Name="idTipoPagto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Produto_Usuario">
+    <End Type="alphasupermarketModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+    <End Type="alphasupermarketModel.Produto" Role="Produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Produto">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

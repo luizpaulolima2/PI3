@@ -1,7 +1,7 @@
 ﻿@model PI3.Database.Cliente
 @{
 	ViewBag.Title = "Dados Cadastrais";
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutPaginasInternas.cshtml";
 }
 
 <link href="~/Content/bootstrap2.css" rel="stylesheet" />
@@ -14,7 +14,7 @@
 	<div>
 		@Html.HiddenFor(m => m.idCliente)
 	</div>
-	<div>
+	<div style="margin-top:2em;">
 		Nome Completo* @Html.TextBoxFor(m => m.nomeCompletoCliente, new { @class = "form-control", required = "", @type = "text" })
 	</div>
 	<div>
@@ -41,11 +41,19 @@
 	<div>
 		Confirmar Senha <input type="password" name="confirmarSenha" class="form-control" required value="@(Model.idCliente != 0 ? Model.senhaCliente : "")" />
 	</div>
+
 	<div>
-		Aceita receber newsLetter? <input type="checkbox" id="recebeNewsLetter" name="recebeNewsLetter" class="form-control" checked="checked" />
+        <input type="submit" value="Cadastrar" class="btn btn-default" style="float:right; margin-bottom:2em;" />
 	</div>
-	<div>
-		<input type="submit" value="Cadastrar" class="btn btn-default" />
-	</div>
+    
+    
+       <style>
+        .form-control {
+            margin-bottom:1em;
+        }
+
+
+
+    </style>
 }
 

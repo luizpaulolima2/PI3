@@ -246,6 +246,12 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Imagens\0.jpg" />
+    <Content Include="Imagens\01.jpg" />
+    <Content Include="Imagens\02.jpg" />
+    <Content Include="Imagens\03.jpg" />
+    <Content Include="Imagens\04.jpg" />
+    <Content Include="Imagens\05.jpg" />
+    <Content Include="Imagens\06.jpg" />
     <Content Include="Imagens\1.jpg" />
     <Content Include="Imagens\2.jpg" />
     <Content Include="Imagens\amex.png" />
@@ -268,6 +274,7 @@
     <Content Include="Imagens\Login.png" />
     <Content Include="Imagens\logo-alpha.png" />
     <Content Include="Imagens\logo-alpha2.png" />
+    <Content Include="Imagens\logo.png" />
     <Content Include="Imagens\mastercard.png" />
     <Content Include="Imagens\menu.png" />
     <Content Include="Imagens\MinhaConta.png" />
@@ -294,6 +301,7 @@
       <DependentUpon>alphaSupermarket.edmx</DependentUpon>
       <LastGenOutput>alphaSupermarket.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\carambola.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -335,6 +343,7 @@
     <Content Include="Views\Endereco\Editar.cshtml" />
     <Content Include="Views\Conta\Finalizar.cshtml" />
     <Content Include="Views\Conta\DetalhesPedido.cshtml" />
+    <Content Include="Views\Shared\_LayoutPaginasInternas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

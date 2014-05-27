@@ -10,23 +10,29 @@
     </div>
     <div class="descricao-produto">
         <h1>@Model.nomeProduto</h1>
-        <p><span>Marca:</span> NAO TEMOS MARCA</p>
         <p><span>Código:</span> @Model.idProduto</p>
         <p><span>Disponibilidade:</span>@(emEstoque ? "Em estoque" : "Em falta")</p>
     </div>
 
-    <h1>R$@Model.precProduto.ToString("n2")</h1>
-    <label> Quantidade:<input type="number" name="quantity" min="1" value="1" class="form-control" required></label>
-    <button type="button" name="comprar" onclick="comprar();" class="btn btn-success" @(emEstoque ? "" : "disabled")>Comprar</button>
+    <div class="comprar-produto">
+        <h1>R$@Model.precProduto.ToString("n2")</h1>
+        <label> Quantidade:<input type="number" name="quantity" min="1" value="1" class="form-control" required></label>
+        <button type="button" name="comprar" onclick="comprar();" class="btn btn-success" @(emEstoque ? "" : "disabled")>Comprar</button>
+
+
+    </div>
+
+
 
     <div class="descricao">
-        <h1>Titulo</h1>
-        <p>@Model.descProduto</p>
+        <h1>@Model.nomeProduto</h1>
+        <p style="padding-bottom:6em;">@Model.descProduto</p>
     </div>
 </article>
 <script>
     function comprar()
     {
+        alert("Adicionado ao carrinho");
         var idProduto = '@Model.idProduto';
         var quantidade = $("input[name=quantity]").val();
 
