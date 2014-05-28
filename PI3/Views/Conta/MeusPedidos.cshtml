@@ -4,9 +4,7 @@
 	ViewBag.Title = "Acompanhe seu pedido";
 }
 
-
 <div class="col-md-8 col-md-offset-2" style="min-height:500px;">
-
     <h2 class="page-header">Acompanhe seu pedido</h2>
     <p id="mensagem"></p>
     <table class="table">
@@ -72,10 +70,10 @@
                         @pedido.ItemPedido.Sum(p => p.precoVendaItem).ToString("n2")
                     </td>
                     <td>
-                        <a name="detalhes" id="detalhes" class="btn btn-default" href="@Url.Action("DetalhesPedido", "Conta", new { id = pedido.idPedido })">Detalhes</a>
+                        <a name="detalhes" id="detalhes" class="btn btn-warning" href="@Url.Action("DetalhesPedido", "Conta", new { id = pedido.idPedido })">Detalhes</a>
                     </td>
                     <td>
-                        <a class="btn btn-info" href="@Url.Action("CancelarPedido", "Conta", new { id = pedido.idPedido })" @(pedido.idStatus <= 2 ? "" : "disabled") onclick="return confirm('Deseja cancelar o pedido ?');">Cancelar Pedido</a>
+                        <a class="btn btn-danger" href="@Url.Action("CancelarPedido", "Conta", new { id = pedido.idPedido })" @(pedido.idStatus <= 2 ? "" : "disabled") onclick="return confirm('Deseja cancelar o pedido ?');">Cancelar Pedido</a>
                     </td>
                 </tr>
             }

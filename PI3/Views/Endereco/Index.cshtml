@@ -3,13 +3,19 @@
     Layout = "~/Views/Shared/_LayoutPaginasInternas.cshtml";
     int i = 1;
 }
-<link href="~/Content/bootstrap2.css" rel="stylesheet" />
 
-
-<div class="col-md-8 col-md-offset-2" style="min-height:400px; text-align:center;" >
+<div class="col-md-8 col-md-offset-2" style="min-height:400px;">
     <h2 class="page-header">Endereços</h2>
-    <p id="mensagem">@TempData["mensagem"]</p>
-    <a class="btn btn-primary" href="@Url.Action("Adicionar", "Endereco")">Adicionar endereço</a>
+    @if (TempData["erro"] != null)
+    {
+        <div class="alert alert-danger"><strong>@TempData["erro"]</strong></div>
+    }
+    @if (TempData["sucesso"] != null)
+    {
+        <div class="alert alert-success"><strong>@TempData["sucesso"]</strong></div>
+    }
+    <a class="btn btn-info" href="@Url.Action("Index", "Conta")" style="width:150px;">Voltar</a>
+    <a class="btn btn-success" href="@Url.Action("Adicionar", "Endereco")" style="width:150px;">Adicionar endereço</a>
     <br /><br />
     @foreach (var endereco in Model)
     {

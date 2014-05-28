@@ -1,59 +1,52 @@
 ﻿@model PI3.Database.Cliente
 @{
-	ViewBag.Title = "Dados Cadastrais";
+    ViewBag.Title = "Dados Cadastrais";
     Layout = "~/Views/Shared/_LayoutPaginasInternas.cshtml";
 }
 
-<link href="~/Content/bootstrap2.css" rel="stylesheet" />
-
 @using (Html.BeginForm("Cadastrar", "Conta", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new { @id = "formularioCliente", role = "form", @class = "col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 " }))
 {
-	<div>
-		@Html.ValidationSummary(true)
-	</div>
-	<div>
-		@Html.HiddenFor(m => m.idCliente)
-	</div>
-	<div style="margin-top:2em;">
-		Nome Completo* @Html.TextBoxFor(m => m.nomeCompletoCliente, new { @class = "form-control", required = "", @type = "text" })
-	</div>
-	<div>
-		Data Nascimento <input type="date" name="dtNascCliente" class="form-control" required value="@(Model.dtNascCliente.HasValue ? Model.dtNascCliente.Value.ToString("yyyy-MM-dd") : "")" />
-	</div>
-	<div>
-		Email* @Html.TextBoxFor(m => m.emailCliente, new { @class = "form-control", required = "", @type = "text" })
-	</div>
-	<div>
-		CPF* @Html.TextBoxFor(m => m.CPFCliente, new { @class = "form-control", required = "", @type = "text" })
-	</div>
-	<div>
-		Celular @Html.TextBoxFor(m => m.celularCliente, new { @class = "form-control", required = "", @type = "text" })
-	</div>
-	<div>
-		Tel Comercial @Html.TextBoxFor(m => m.telComercialCliente, new { @class = "form-control", required = "", @type = "text" })
-	</div>
-	<div>
-		Tel Residencial @Html.TextBoxFor(m => m.telResidencialCliente, new { @class = "form-control", required = "", @type = "text" })
-	</div>
-	<div>
-		Senha @Html.TextBoxFor(m => m.senhaCliente, new { @class = "form-control", required = "", @type = "password" })
-	</div>
-	<div>
-		Confirmar Senha <input type="password" name="confirmarSenha" class="form-control" required value="@(Model.idCliente != 0 ? Model.senhaCliente : "")" />
-	</div>
-
-	<div>
-        <input type="submit" value="Cadastrar" class="btn btn-default" style="float:right; margin-bottom:2em;" />
-	</div>
-    
-    
-       <style>
+    <div>
+        @Html.ValidationSummary(true)
+    </div>
+    <div>
+        @Html.HiddenFor(m => m.idCliente)
+    </div>
+    <div style="margin-top:2em;">
+        Nome Completo* @Html.TextBoxFor(m => m.nomeCompletoCliente, new { @class = "form-control", required = "", @type = "text" })
+    </div>
+    <div>
+        Data Nascimento <input type="date" name="dtNascCliente" class="form-control" required value="@(Model.dtNascCliente.HasValue ? Model.dtNascCliente.Value.ToString("yyyy-MM-dd") : "")" />
+    </div>
+    <div>
+        Email* @Html.TextBoxFor(m => m.emailCliente, new { @class = "form-control", required = "", @type = "text" })
+    </div>
+    <div>
+        CPF* @Html.TextBoxFor(m => m.CPFCliente, new { @class = "form-control", required = "", @type = "text" })
+    </div>
+    <div>
+        Celular @Html.TextBoxFor(m => m.celularCliente, new { @class = "form-control", required = "", @type = "text" })
+    </div>
+    <div>
+        Tel Comercial @Html.TextBoxFor(m => m.telComercialCliente, new { @class = "form-control", required = "", @type = "text" })
+    </div>
+    <div>
+        Tel Residencial @Html.TextBoxFor(m => m.telResidencialCliente, new { @class = "form-control", required = "", @type = "text" })
+    </div>
+    <div>
+        Senha @Html.TextBoxFor(m => m.senhaCliente, new { @class = "form-control", required = "", @type = "password" })
+    </div>
+    <div>
+        Confirmar Senha <input type="password" name="confirmarSenha" class="form-control" required value="@(Model.idCliente != 0 ? Model.senhaCliente : "")" />
+    </div>
+    <div style="text-align:center;">
+        <a class="btn btn-info" style="margin-bottom:2em;width:150px;" href="@Url.Action("Index", "Conta")">Voltar</a>
+        <input type="submit" value="Salvar" class="btn btn-success" style="margin-bottom:2em;width:150px;" />
+    </div>
+    <style>
         .form-control {
-            margin-bottom:1em;
+            margin-bottom: 1em;
         }
-
-
-
     </style>
 }
 

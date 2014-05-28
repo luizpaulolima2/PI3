@@ -130,7 +130,15 @@ namespace PI3.Controllers
             if (lista.Count == 0)
                 return RedirectToAction("Index", "Home");
 
-            ViewBag.carrinho = lista;
+            if (Request.Form.Count > 0)
+            {
+                foreach (var item in lista)
+                {
+                    AtualizaQuantidadeSessao(item, int.Parse(Request.Form["quantidade[" + item.idProduto + "]"]));
+                }
+            }
+
+            ViewBag.carrinho = RecuperaCarrinhoSessao();
 
             List<SelectListItem> enderecos = new List<SelectListItem>();
             List<SelectListItem> pagamentos = new List<SelectListItem>();

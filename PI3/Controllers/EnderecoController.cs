@@ -43,11 +43,11 @@ namespace PI3.Controllers
                         db.Entry<Endereco>(model).State = System.Data.Entity.EntityState.Modified;
                         db.SaveChanges();
 
-                        TempData["mensagem"] = "Endreço alterado com sucesso !";
+                        TempData["sucesso"] = "Endreço alterado com sucesso !";
                     }
                     catch (Exception)
                     {
-                        TempData["mensagem"] = "Falha ao alterar o endereço.";
+                        TempData["erro"] = "Falha ao alterar o endereço. Tente novamente.";
                     }
                 }
 
@@ -79,7 +79,7 @@ namespace PI3.Controllers
                     db.Endereco.Add(model);
                     db.SaveChanges();
 
-                    TempData["mensagem"] = "Endreço adicionado com sucesso !";
+                    TempData["sucesso"] = "Endreço adicionado com sucesso !";
 
                     return RedirectToAction("Index");
                 }
@@ -92,18 +92,25 @@ namespace PI3.Controllers
         {
             using (var db = new alphasupermarketEntities())
             {
-                var endereco = db.Endereco.FirstOrDefault(c => c.idEndereco == id);
+                var endereco = db.Endereco.Include("Pedido").FirstOrDefault(c => c.idEndereco == id);
+
+                if(endereco.Pedido.Count > 0)
+                {
+                    TempData["erro"] = "Operação cancelada. Existe um ou mais pedidos em aberto com esse endereço !";
+
+                    return RedirectToAction("Index");
+                }
 
                 try
                 {
                     db.Endereco.Remove(endereco);
                     db.SaveChanges();
 
-                    TempData["mensagem"] = "Endreço excluído com sucesso !";
+                    TempData["sucesso"] = "Endreço excluído com sucesso !";
                 }
                 catch (Exception)
                 {
-                    TempData["mensagem"] = "Erro ao excluir endereço";
+                    TempData["erro"] = "Falha ao excluir endereço. Tente novamente.";
                 }
 
                 return RedirectToAction("Index");

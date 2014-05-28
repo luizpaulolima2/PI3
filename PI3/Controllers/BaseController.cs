@@ -35,6 +35,20 @@ namespace PI3.Controllers
 			return carrinho;
 		}
 
+        public void AtualizaQuantidadeSessao(Produto produto, int quantidadeTotal)
+        {
+            List<Produto> carrinho = RecuperaCarrinhoSessao();
+
+            List<Produto> novaLista = carrinho.Where(l => l.idProduto != produto.idProduto).ToList();
+
+            for (int i = 0; i < quantidadeTotal; i++)
+            {
+                novaLista.Add(produto);
+            }
+
+            Session["carrinho"] = novaLista;
+        }
+
 		public List<Produto> RecuperaCarrinhoSessao()
 		{
 			List<Produto> carrinho = new List<Produto>();
