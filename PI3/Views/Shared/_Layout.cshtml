@@ -80,6 +80,10 @@
                 <li class="Pescados"><a href="@Url.Action("Pesquisa", "Home", new { categoria = 1 })" title="pescados"><div class="pescados"></div><p>Limpeza</p></a></li>
                 <li class="Congelados"><a href="@Url.Action("Pesquisa", "Home", new { categoria = 3 })" title="congelados"><div class="congelados"></div><p>Frios e laticinios</p></a></li>
                 <li class="Default"><a href="@Url.Action("Pesquisa", "Home", new { categoria = "todos"})" title="default"><div class="default"></div><p>Todos Produtos</p></a></li>
+                @foreach (var categoriaNova in PI3.Controllers.HomeController.MaisCategorias())
+                {
+                    <li class="Default"><a href="@Url.Action("Pesquisa", "Home", new { categoria = categoriaNova.idCategoria })" title="default"><div class="default"></div><p>@categoriaNova.nomeCategoria</p></a></li>
+                }
             </ul>
         </nav>
         <article style="margin-bottom: 0; height: 30px;">
@@ -93,48 +97,23 @@
         </article>
 
         @RenderBody()
-
-
+        
         <aside style="margin-bottom:3em; cursor:pointer;">
-            <!-- lista ofertas da semana -->
             <div class="offers">Ofertas</div>
             <ul class="sale">
-                <li>
-                    <a  onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = 1 })'">
-                        <div class="product-img"><img src="@Url.Content("~/Imagens/01.jpg")"></div>
-                        <p class="product-name">ESTRELLA GALICIA</p>
-                        <p class="product-detail">Garrafa 200ml</p>
-                        <p class="product-price">Por: R$2,15</p>
-                    </a>                   
-                </li>
-                <li>
-                    <a onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = 7 })'">
-                        <div class="product-img"><img src="@Url.Content("~/Imagens/02.jpg")" /> </div>
-                        <p class="product-name">ESTRELLA GALICIA</p>
-                        <p class="product-detail">Garrafa 200ml</p>
-                        <p class="product-price">Por: R$2,15</p>
-                    </a>
-                </li>
-                <li>
-                    <a onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = 2 })'">
-                        <div class="product-img"><img src="@Url.Content("~/Imagens/03.jpg")"></div>
-                        <p class="product-name">ESTRELLA GALICIA</p>
-                        <p class="product-detail">Garrafa 200ml</p>
-                        <p class="product-price">Por: R$2,15</p>
-                    </a>
-                  
-                </li>
-                <li>
-                    <a onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = 17 })'">
-                        <div class="product-img"><img src="@Url.Content("~/Imagens/04.jpg")"></div>
-                        <p class="product-name">ESTRELLA GALICIA</p>
-                        <p class="product-detail">Garrafa 200ml</p>
-                        <p class="product-price">Por: R$2,15</p>
-                    </a>                  
-                </li>
+                @foreach (var item in PI3.Controllers.HomeController.MaisVendidos())
+                {
+                    <li>
+                        <a onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = item.idProduto })'">
+                            <div class="product-img"><img src="data:image/jpg;base64,@(item.imagem != null ? Convert.ToBase64String(item.imagem) : "")"></div>
+                            <p class="product-name">@item.descProduto</p>
+                            @*<p class="product-detail">Garrafa 200ml</p>*@
+                            <p class="product-price">Por: @item.precProduto.ToString("n2")</p>
+                        </a>
+                    </li>
+                }
             </ul>
-        </aside >
-
+        </aside>
         
         <footer>
             <div class="footer">

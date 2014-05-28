@@ -13,7 +13,19 @@ namespace PI3.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            using (var db = new alphasupermarketEntities())
+            {
+                int quantidadeParaMostrar = 9;
+
+                // retorna produtos ativos, ordenados randomicamente pegado so os quantidadeParaMostrar primeiros
+                var produtosAleatorios = db.Produto.Where(p => p.ativoProduto == "1").OrderBy(p => Guid.NewGuid()).Take(quantidadeParaMostrar).ToList();
+
+                // os 4 produtos mais vendidos
+                var ids4MaisVendidos = db.ItemPedido.Include("Produto").GroupBy(p => p.idProduto).Select(gr => new { id = gr.Key, count = gr.Count() }).OrderByDescending(p => p.count).Take(4).Select(g => g.id).ToList();
+                ViewBag.maisVendidos = db.Produto.Where(p => ids4MaisVendidos.Contains(p.idProduto)).ToList();
+
+                return View(produtosAleatorios);
+            }
         }
 
         public ActionResult Pesquisa(string categoria, string termo)
@@ -141,6 +153,30 @@ namespace PI3.Controllers
             RemoveProdutoSessao(produtoId);
 
             return RedirectToAction("Carrinho");
+        }
+
+        public static List<Produto> MaisVendidos()
+        {
+            using (var db = new alphasupermarketEntities())
+            {
+                db.Configuration.LazyLoadingEnabled = false;
+
+                var ids4MaisVendidos = db.ItemPedido.Include("Produto").GroupBy(p => p.idProduto).Select(gr => new { id = gr.Key, count = gr.Count() }).OrderByDescending(p => p.count).Take(4).Select(g => g.id).ToList();
+
+                return db.Produto.Where(p => ids4MaisVendidos.Contains(p.idProduto)).ToList();
+            }
+        }
+
+        public static List<Categoria> MaisCategorias()
+        {
+            using (var db = new alphasupermarketEntities())
+            {
+                db.Configuration.LazyLoadingEnabled = false;
+
+                int[] categoriasUsadas = { 1, 2, 3, 4, 5 };
+
+                return db.Categoria.Where(c => !categoriasUsadas.Contains(c.idCategoria)).ToList();
+            }
         }
 
         #endregion
