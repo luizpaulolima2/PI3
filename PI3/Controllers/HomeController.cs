@@ -173,7 +173,7 @@ namespace PI3.Controllers
             {
                 db.Configuration.LazyLoadingEnabled = false;
 
-                int[] categoriasUsadas = { 1, 2, 3, 4, 5 };
+                int[] categoriasUsadas = { 1, 2, 3, 4, 5, 6 };
 
                 return db.Categoria.Where(c => !categoriasUsadas.Contains(c.idCategoria)).ToList();
             }
