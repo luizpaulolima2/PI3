@@ -269,6 +269,8 @@
     <Content Include="Imagens\FinalizarCompra.png" />
     <Content Include="Imagens\graos.png" />
     <Content Include="Imagens\hortifruti.png" />
+    <Content Include="Imagens\img-padrao.jpg" />
+    <Content Include="Imagens\img-padrao.png" />
     <Content Include="Imagens\limpeza.png" />
     <Content Include="Imagens\Login.png" />
     <Content Include="Imagens\logo-alpha.png" />

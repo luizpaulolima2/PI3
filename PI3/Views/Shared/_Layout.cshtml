@@ -7,7 +7,7 @@
     <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
     <title>@ViewBag.Title - Alpha Supermarket</title>
     <link rel='shortcut icon' href="~/Imagens/logo.png" />
-
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     @Styles.Render("~/Content/css")
 </head>
 <body>
@@ -176,4 +176,15 @@
 			}
 		);
 	}
+
+
+</script>
+<script>
+    $('document').ready(function () {
+        $('.product-img > img').each(function () {
+            if ($(this).attr('src') == "data:image/jpg;base64,") {
+                $(this).attr('src', "../Imagens/img-padrao.jpg");
+            }
+        });
+    });
 </script>
