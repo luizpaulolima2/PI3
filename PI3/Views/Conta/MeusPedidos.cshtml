@@ -67,7 +67,7 @@
                         @pedido.Endereco.cidadeEndereco - @pedido.Endereco.paisEndereco
                     </td>
                     <td>
-                        @pedido.ItemPedido.Sum(p => p.precoVendaItem).ToString("n2")
+                        @pedido.ItemPedido.Sum(p => (p.precoVendaItem - p.Produto.descontoPromocao.Value)).ToString("n2")
                     </td>
                     <td>
                         <a name="detalhes" id="detalhes" class="btn btn-warning" href="@Url.Action("DetalhesPedido", "Conta", new { id = pedido.idPedido })">Detalhes</a>

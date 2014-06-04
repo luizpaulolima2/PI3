@@ -22,6 +22,9 @@
                         Preço
                     </th>
                     <th>
+                        Desconto
+                    </th>
+                    <th>
                         Quantidade
                     </th>
                     <th>
@@ -46,10 +49,13 @@
                             @produto.precProduto.ToString("n2")
                         </td>
                         <td>
+                            @produto.descontoPromocao.Value.ToString("n2")
+                        </td>
+                        <td>
                             <input type="number" min="1" value="@qtdProduto" name="quantidade[@produto.idProduto]" />
                         </td>
                         <td>
-                            @((qtdProduto * produto.precProduto).ToString("n2"))
+                            @((qtdProduto * (produto.precProduto - produto.descontoPromocao.Value)).ToString("n2"))
                         </td>
                         <td>
                             <a class="btn btn-danger" href="@Url.Action("ExcluirItemCarrinho", "Home", new { produtoId = produto.idProduto })">Excluir</a>

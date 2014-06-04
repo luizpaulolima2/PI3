@@ -24,6 +24,9 @@
                     Preço Unit.
                 </th>
                 <th>
+                    Desconto
+                </th>
+                <th>
                     Total
                 </th>
             </tr>
@@ -42,7 +45,10 @@
                         @item.precoVendaItem.ToString("n2")
                     </td>
                     <td>
-                        @((item.qtdProduto * item.precoVendaItem).ToString("n2"))
+                        @item.Produto.descontoPromocao.Value.ToString("n2")
+                    </td>
+                    <td>
+                        @((item.qtdProduto * (item.precoVendaItem - item.Produto.descontoPromocao.Value)).ToString("n2"))
                     </td>
                 </tr>
             }

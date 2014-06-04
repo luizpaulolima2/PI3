@@ -117,8 +117,7 @@ namespace PI3.Controllers
             using (var db = new alphasupermarketEntities())
             {
                 string email = User.Identity.Name;
-                var cliente = db.Cliente.Include("Pedido").Include("Pedido.StatusPedido").Include("Pedido.TipoPagamento").Include("Pedido.ItemPedido").Include("Endereco").FirstOrDefault(c => c.emailCliente == email);
-
+                var cliente = db.Cliente.Include("Pedido").Include("Pedido.StatusPedido").Include("Pedido.TipoPagamento").Include("Pedido.ItemPedido").Include("Pedido.ItemPedido.Produto").Include("Endereco").FirstOrDefault(c => c.emailCliente == email);
                 return View(cliente);
             }
         }
