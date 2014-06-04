@@ -143,7 +143,7 @@ namespace PI3.Controllers
                 return Json(new
                 {
                     totalProdutos = carrinho.Count,
-                    valorTotal = carrinho.Sum(c => c.precProduto).ToString("n2")
+                    valorTotal = carrinho.Sum(c => (c.precProduto - c.descontoPromocao.Value)).ToString("n2")
                 }, JsonRequestBehavior.AllowGet);
             }
         }

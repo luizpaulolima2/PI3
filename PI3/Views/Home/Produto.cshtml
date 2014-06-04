@@ -4,7 +4,7 @@
     bool emEstoque = Model.qtdMinEstoque > 0;
 }
 <article class="produtos">
-  
+
     <div class="img-produto">
         <img src="data:image/jpg;base64,@(Model.imagem != null ? Convert.ToBase64String(Model.imagem) : "")" class="center-block" alt="">
     </div>
@@ -15,7 +15,14 @@
     </div>
 
     <div class="comprar-produto">
-        <h1>R$@Model.precProduto.ToString("n2")</h1>
+        @if (Model.descontoPromocao > 0)
+        {
+            <h1>De:R$ @(Model.precProduto.ToString("n2")) - Por: R$@((Model.precProduto - Model.descontoPromocao.Value).ToString("n2"))</h1>
+        }
+        else
+        { 
+            <h1>R$@Model.precProduto.ToString("n2")</h1>
+        }
         <label> Quantidade:<input type="number" name="quantity" min="1" value="1" class="form-control" required></label>
         <button type="button" name="comprar" onclick="comprar();" class="btn btn-success" @(emEstoque ? "" : "disabled")>Comprar</button>
 
@@ -30,8 +37,7 @@
     </div>
 </article>
 <script>
-    function comprar()
-    {
+    function comprar() {
         alert("Adicionado ao carrinho");
         var idProduto = '@Model.idProduto';
         var quantidade = $("input[name=quantity]").val();

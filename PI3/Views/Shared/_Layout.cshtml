@@ -57,16 +57,16 @@
                 <div class="logo">
                     <a href="~/Home/Index"><img src="~/Imagens/logo-alpha.png" alt=""></a>
                 </div>
-                
-                    <div class="carrinho2" style="overflow:hidden;">
-                        <img src="~/Imagens/carrinhoCompras.png" alt="">
-                        <p>Carrinho</p>
-                        <p class="itens">0 Iten(s) - $0,00</p>
-                        <div class="seta-baixo"></div>
 
-                        <button class="btn btn-primary col-md-10 col-md-offset-1" style="margin-top:1.5em;"><a href="~/Home/Carrinho" style="color:white">Visualizar Carrinho</a></button>
-                    </div>
-                
+                <div class="carrinho2" style="overflow:hidden;">
+                    <img src="~/Imagens/carrinhoCompras.png" alt="">
+                    <p>Carrinho</p>
+                    <p class="itens">0 Iten(s) - $0,00</p>
+                    <div class="seta-baixo"></div>
+
+                    <button class="btn btn-primary col-md-10 col-md-offset-1" style="margin-top:1.5em;"><a href="~/Home/Carrinho" style="color:white">Visualizar Carrinho</a></button>
+                </div>
+
             </div>
             <!-- fim header -->
         </header>
@@ -97,7 +97,7 @@
         </article>
 
         @RenderBody()
-        
+
         <aside style="margin-bottom:3em; cursor:pointer;">
             <div class="offers">Ofertas</div>
             <ul class="sale">
@@ -108,13 +108,20 @@
                             <div class="product-img"><img style="margin-left:0;" src="data:image/jpg;base64,@(item.imagem != null ? Convert.ToBase64String(item.imagem) : "")"></div>
                             <p class="product-name">@item.nomeProduto</p>
                             @*<p class="product-detail">Garrafa 200ml</p>*@
-                            <p class="product-price">Por: @item.precProduto.ToString("n2")</p>
+                            @if (@item.descontoPromocao > 0)
+                            {
+                                <p class="product-price">De: @item.precProduto.ToString("n2") - Por: @((item.precProduto - item.descontoPromocao.Value).ToString("n2"))</p>
+                            }
+                            else
+                            {
+                                <p class="product-price">Por: @item.precProduto.ToString("n2")</p>
+                            }
                         </a>
                     </li>
                 }
             </ul>
         </aside>
-        
+
         <footer>
             <div class="footer">
                 <div class="newsletter">
@@ -159,21 +166,21 @@
 </body>
 </html>
 <script>
-	// carrega sempre o carrinho
-	carregarCarrinho(0, 0);
+    // carrega sempre o carrinho
+    carregarCarrinho(0, 0);
 
-	function carregarCarrinho(id, qtd) {
-		$.post('@Url.Action("InsereProdutoCarrinho", "Home")',
+    function carregarCarrinho(id, qtd) {
+        $.post('@Url.Action("InsereProdutoCarrinho", "Home")',
 			{
-				produtoId: id,
-				quantidade: qtd
+			    produtoId: id,
+			    quantidade: qtd
 			},
 			function (data) {
-				var totalProdutos = data.totalProdutos;
-				var valorTotal = data.valorTotal;
-				var texto = totalProdutos + ' Iten(s) - $' + valorTotal;
-				$(".carrinho2 p.itens").html(texto);
+			    var totalProdutos = data.totalProdutos;
+			    var valorTotal = data.valorTotal;
+			    var texto = totalProdutos + ' Iten(s) - $' + valorTotal;
+			    $(".carrinho2 p.itens").html(texto);
 			}
 		);
-	}
+    }
 </script>

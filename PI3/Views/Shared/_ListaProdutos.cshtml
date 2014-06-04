@@ -9,6 +9,9 @@
                 Valor
             </td>
             <td>
+                Desconto
+            </td>
+            <td>
                 Quantidade
             </td>
             <td>
@@ -28,6 +31,9 @@
                     @produto.precProduto.ToString("n2")
                 </td>
                 <td>
+                    @produto.descontoPromocao.Value.ToString("n2")
+                </td>
+                <td>
                     @qtdProduto
                 </td>
             </tr>
@@ -39,7 +45,7 @@
                 <b>TOTAL</b>
             </td>
             <td>
-                <b>$@Model.Sum(m => m.precProduto).ToString("n2")</b>
+                <b>$@Model.Sum(m => (m.precProduto - m.descontoPromocao.Value)).ToString("n2")</b>
             </td>
         </tr>
     </tfoot>
