@@ -23,10 +23,10 @@
                 <p class="product-name" itemprop="name" style="height:23px; overflow:hidden">@produto.nomeProduto</p>
 
                 <!-- div que separa itens referente ao preço de cada produto -->
-                <p class="product-price">Por: R$@produto.precProduto.ToString("n2")</p>
+                <p class="product-price">De: R$@produto.precProduto.ToString("n2")</p>
 
             <button onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = produto.idProduto })'" class=" btn btn-primary" style="float:right; margin-right:1em;">Visualizar</button>
-                <button onclick="carregarCarrinho(@produto.idProduto,1); alert(' adicionado ao carrinho');" class="btn btn-success" style="float:right; z-index:22; margin-right:1em;">Add ao carrinho</button>
+                <button onclick="carregarCarrinho(@produto.idProduto,1); alert(' adicionado ao carrinho');" class="btn btn-success" style="float:right; z-index:22; margin-right:1em;">Comprar</button>
 
                 <!-- fim div que engloba todo o produto -->
             </div>

@@ -23,7 +23,7 @@
                 <p class="product-name" itemprop="name" style="height:23px; overflow:hidden">@produto.nomeProduto</p>
                 <p class="product-price">Por: R$@produto.precProduto.ToString("n2")</p>
                 <button onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = produto.idProduto })'" class=" btn btn-primary" style="float:right; margin-right:1em;">Visualizar</button>
-                <button onclick="carregarCarrinho(@produto.idProduto,1); alert(' adicionado ao carrinho');" class="btn btn-success" style="float:right; z-index:22; margin-right:1em;">Add ao carrinho</button>
+                <button onclick="carregarCarrinho(@produto.idProduto,1);" data-toggle="modal" data-target="#myModal" class="btn btn-success" style="float:right; z-index:22; margin-right:1em;">Comprar</button>
             </div>
         </div>
 
@@ -39,3 +39,21 @@
         }
     }
 </article>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+               <h1></h1>
+            </div>
+            <div class="modal-body">
+                <h3 style="text-align:center">Adicionado ao carrinho com sucesso.</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>

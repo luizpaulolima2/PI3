@@ -18,7 +18,7 @@
 		<div class="product-align">
             <div class="product" itemscope itemtype="http://schema.org/Product" style="height: 372px;">
                 <div class="product-img">
-                    <img itemprop="image" class="center-block" alt="imagem produto" src="data:image/jpg;base64,@(Convert.ToBase64String(produto.imagem))">
+                    <img itemprop="image" class="center-block" alt="imagem produto" src="data:image/jpg;base64,@(produto.imagem != null ? Convert.ToBase64String(produto.imagem) : "")">
                 </div>
                 <p class="product-name" itemprop="name" style="height:23px; overflow:hidden">@produto.nomeProduto</p>
 

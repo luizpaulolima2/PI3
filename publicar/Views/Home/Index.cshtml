@@ -1,127 +1,41 @@
-﻿@model PI3.Database.Produto
+﻿@model List<PI3.Database.Produto>
 @{
     ViewBag.Title = "Home Page";
+    int contador = 1;
+    List<PI3.Database.Produto> maisVendidos = ViewBag.maisVendidos;
 }
 <article>
-    
-    <div class="row" style="margin-top:0;">
+    @if (Model == null || Model.Count == 0)
+    {
+        @Html.Raw("Nenhum produto encontrado :(")
+    }
+    @foreach (var produto in Model)
+    {
+        if (contador == 1)
+        {
+            @Html.Raw("<div class='row' style='margin-top:0;'>")
+        }
         <div class="product-align">
             <div class="product" itemscope itemtype="http://schema.org/Product" style="height: 372px;">
                 <div class="product-img">
-                    <img itemprop="image" class="center-block" alt="imagem produto" style="margin-top:3em;" src="@Url.Content("~/Imagens/01.jpg")">
+                    <img itemprop="image" class="center-block" alt="imagem produto" src="data:image/jpg;base64,@(produto.imagem != null ? Convert.ToBase64String(produto.imagem) : "")">
                 </div>
-                <p class="product-name" itemprop="name">Arroz Agulhinha Longo Fino Tipo 1</p>
-
-
-                <!-- div que separa itens referente ao preço de cada produto -->
-                <p class="product-price">R$2,99</p>
-
-                <button class="btn btn-primary" onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = 1 })'" style="float:right; margin-right:1em;">Visualizar</button>
-                <button onclick="carregarCarrinho(1,1); alert(' adicionado ao carrinho');" class="btn btn-success" style="float:right; z-index:22; margin-right:1em;">Add ao carrinho</button>
-
-                <!-- fim div que engloba todo o produto -->
+                <p class="product-name" itemprop="name" style="height:23px; overflow:hidden">@produto.nomeProduto</p>
+                <p class="product-price">Por: R$@produto.precProduto.ToString("n2")</p>
+                <button onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = produto.idProduto })'" class=" btn btn-primary" style="float:right; margin-right:1em;">Visualizar</button>
+                <button onclick="carregarCarrinho(@produto.idProduto,1); alert(' adicionado ao carrinho');" class="btn btn-success" style="float:right; z-index:22; margin-right:1em;">Add ao carrinho</button>
             </div>
-            <!-- fim div que alinha produtos-->
         </div>
 
-        <!-- div que alinha produtos -->
-        <div class="product-align">
-            <div class="product" itemscope itemtype="http://schema.org/Product" style="height: 372px;">
-                <div class="product-img">
-                    <img itemprop="image" class="center-block" alt="imagem produto" style="margin-top:1em;" src="@Url.Content("~/Imagens/02.jpg")">
-                </div>
-                <p class="product-name" itemprop="name">Chileno Tinto Carmenère 120 </p>
-              
-                <!-- div que separa itens referente ao preço de cada produto -->
-                <p class="product-price"> R$37,34</p>
+        if (contador == 3)
+        {
+            @Html.Raw("</div>")
 
-                <button class="btn btn-primary" onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = 7 })'" style="float:right; margin-right:1em; ">Visualizar</button>
-                <button onclick="carregarCarrinho(7,1); alert(' adicionado ao carrinho');" class="btn btn-success" style="float:right; z-index:22; margin-right:1em;">Add ao carrinho</button>
-
-                <!-- fim div que engloba todo o produto -->
-            </div>
-            <!-- fim div que alinha produtos-->
-        </div>
-
-        <!-- div que alinha produtos -->
-        <div class="product-align">
-            <div class="product" itemscope itemtype="http://schema.org/Product" style="height: 372px;">
-                <div class="product-img">
-                    <img itemprop="image" class="center-block" alt="imagem produto" style="margin-top:1em;" src="@Url.Content("~/Imagens/03.jpg")">
-                </div>
-                <p class="product-name" itemprop="name">Arroz Integral TIO JOÃO</p>
-                
-
-                <!-- div que separa itens referente ao preço de cada produto -->
-                <p class="product-price">R$3,20</p>
-
-                <button class="btn btn-primary" onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = 2 })'" style="float:right; margin-right:1em;">Visualizar</button>
-                <button onclick="carregarCarrinho(2,1); alert(' adicionado ao carrinho');" class="btn btn-success" style="float:right; z-index:22; margin-right:1em;">Add ao carrinho</button>
-
-                <!-- fim div que engloba todo o produto -->
-            </div>
-            <!-- fim div que alinha produtos-->
-        </div>
-        <!-- div que alinha produtos -->
-    </div>
-    <div class="row">
-        <div class="product-align">
-            <div class="product" itemscope itemtype="http://schema.org/Product" style="height: 372px;">
-                <div class="product-img">
-                    <img itemprop="image" class="center-block" alt="imagem produto" style="margin-top:0em;" src="@Url.Content("~/Imagens/04.jpg")">
-                </div>
-                <p class="product-name" itemprop="name">Frango Desfiado Cozido</p>
-                
-
-                <!-- div que separa itens referente ao preço de cada produto -->
-                <p class="product-price">R$16,79</p>
-
-                <button class="btn btn-primary" onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = 17 })'" style="float:right; margin-right:1em;">Visualizar</button>
-                <button onclick="carregarCarrinho(17,1); alert(' adicionado ao carrinho');" class="btn btn-success" style="float:right; z-index:22; margin-right:1em;">Add ao carrinho</button>
-
-                <!-- fim div que engloba todo o produto -->
-            </div>
-            <!-- fim div que alinha produtos-->
-        </div>
-
-        <!-- div que alinha produtos -->
-        <div class="product-align">
-            <div class="product" itemscope itemtype="http://schema.org/Product" style="height: 372px;">
-                <div class="product-img">
-                    <img itemprop="image" class="center-block" alt="imagem produto" style="margin-top:0em;" src="@Url.Content("~/Imagens/05.jpg")">
-                </div>
-                <p class="product-name" itemprop="name">Pão Caseiro de Coco Panco </p>
-                
-                <!-- div que separa itens referente ao preço de cada produto -->
-                <p class="product-price">R$7,56</p>
-
-                <button class="btn btn-primary" onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = 27 })'" style="float:right; margin-right:1em;">Visualizar</button>
-                <button onclick="carregarCarrinho(27,1); alert(' adicionado ao carrinho');" class="btn btn-success" style="float:right; z-index:22; margin-right:1em;">Add ao carrinho</button>
-
-                <!-- fim div que engloba todo o produto -->
-            </div>
-            <!-- fim div que alinha produtos-->
-        </div>
-
-        <!-- div que alinha produtos -->
-        <div class="product-align">
-            <div class="product" itemscope itemtype="http://schema.org/Product" style="height: 372px;">
-                <div class="product-img">
-                    <img itemprop="image" class="center-block" alt="imagem produto" src="@Url.Content("~/Imagens/06.jpg")">
-                </div>
-                <p class="product-name" itemprop="name">Limpador para casa Perfumado</p>
-                
-
-                <!-- div que separa itens referente ao preço de cada produto -->
-                <p class="product-price">R$5,87</p>
-
-                <button class="btn btn-primary" onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = 30 })'" style="float:right; margin-right:1em;">Visualizar</button>
-                <button onclick="carregarCarrinho(30,1); alert(' adicionado ao carrinho');" class="btn btn-success" style="float:right; z-index:22; margin-right:1em;">Add ao carrinho</button>
-
-                <!-- fim div que engloba todo o produto -->
-            </div>
-            <!-- fim div que alinha produtos-->
-        </div>
-        <!-- div que alinha produtos -->
-    </div>
+            contador = 1;
+        }
+        else
+        {
+            contador++;
+        }
+    }
 </article>

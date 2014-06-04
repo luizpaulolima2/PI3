@@ -1,5 +1,6 @@
 ﻿@using PI3.Database
 @{
+    ViewBag.Title = "Finalizar compra";
     Layout = "~/Views/Shared/_LayoutPaginasInternas.cshtml";
     List<Produto> carrinho = ViewBag.carrinho;
 }
@@ -21,7 +22,7 @@
             <div class="panel-heading">
                 <h3 class="panel-title"><b>2 - Escolha o endereço de entrega</b></h3>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" style="width:100%;">
                 <table>
                     <tr>
                         <td>

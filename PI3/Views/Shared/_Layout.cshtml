@@ -105,8 +105,8 @@
                 {
                     <li>
                         <a onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = item.idProduto })'">
-                            <div class="product-img"><img src="data:image/jpg;base64,@(item.imagem != null ? Convert.ToBase64String(item.imagem) : "")"></div>
-                            <p class="product-name">@item.descProduto</p>
+                            <div class="product-img"><img style="margin-left:0;" src="data:image/jpg;base64,@(item.imagem != null ? Convert.ToBase64String(item.imagem) : "")"></div>
+                            <p class="product-name">@item.nomeProduto</p>
                             @*<p class="product-detail">Garrafa 200ml</p>*@
                             <p class="product-price">Por: @item.precProduto.ToString("n2")</p>
                         </a>
