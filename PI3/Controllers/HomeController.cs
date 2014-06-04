@@ -72,6 +72,11 @@ namespace PI3.Controllers
             return View(RecuperaCarrinhoSessao());
         }
 
+        public ActionResult Error()
+        {
+            return View();
+        }
+
         #region Login
 
         public ActionResult Login()

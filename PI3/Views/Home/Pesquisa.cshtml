@@ -22,9 +22,15 @@
                     <img itemprop="image" class="center-block" alt="imagem produto" src="data:image/jpg;base64,@(produto.imagem != null ? Convert.ToBase64String(produto.imagem) : "")">
                 </div>
                 <p class="product-name" itemprop="name" style="height:23px; overflow:hidden">@produto.nomeProduto</p>
-
-                <!-- div que separa itens referente ao preço de cada produto -->
-                <p class="product-price">De: R$@produto.precProduto.ToString("n2")</p>
+                @if (@produto.descontoPromocao > 0)
+                {
+                    <p class="product-price" style="text-decoration:line-through; margin-bottom:0;">De: R$ @produto.precProduto.ToString("n2") </p >
+                    <p class="product-price" style="margin-top:0;" > por R$ @((produto.precProduto - produto.descontoPromocao.Value).ToString("n2"))</p>
+                }
+                else
+                {
+                    <p class="product-price" style="margin-bottom: 1.8em;">Por: @produto.precProduto.ToString("n2")</p>
+                }
 
             <button onclick="window.location.href = '@Url.Action("Produto", "Home", new { id = produto.idProduto })'" class=" btn btn-primary" style="float:right; margin-right:1em;">Visualizar</button>
                 <button onclick="carregarCarrinho(@produto.idProduto,1);" data-toggle="modal" data-target="#myModal" class="btn btn-success" style="float:right; z-index:22; margin-right:1em;">Comprar</button>

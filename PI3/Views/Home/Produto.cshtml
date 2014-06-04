@@ -17,28 +17,47 @@
     <div class="comprar-produto">
         @if (Model.descontoPromocao > 0)
         {
-            <h1>De:R$ @(Model.precProduto.ToString("n2")) - Por: R$@((Model.precProduto - Model.descontoPromocao.Value).ToString("n2"))</h1>
+            <h1 style="text-decoration:line-through; font-size:25px; color:gray; margin-bottom:0;">De:R$ @(Model.precProduto.ToString("n2")) </h1>
+            <h1 style="margin-top:0.5em;">Por: R$@((Model.precProduto - Model.descontoPromocao.Value).ToString("n2"))</h1>
         }
         else
         { 
             <h1>R$@Model.precProduto.ToString("n2")</h1>
         }
         <label> Quantidade:<input type="number" name="quantity" min="1" value="1" class="form-control" required></label>
-        <button type="button" name="comprar" onclick="comprar();" class="btn btn-success" @(emEstoque ? "" : "disabled")>Comprar</button>
+        <button type="button" name="comprar" onclick="comprar();" data-toggle="modal" data-target="#myModal"  class="btn btn-success" @(emEstoque ? "" : "disabled")>Comprar</button>
 
 
     </div>
 
-
+    
 
     <div class="descricao">
         <h1>@Model.nomeProduto</h1>
         <p style="padding-bottom:6em;">@Model.descProduto</p>
     </div>
 </article>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h1></h1>
+            </div>
+            <div class="modal-body">
+                <h3 style="text-align:center">Adicionado ao carrinho com sucesso.</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     function comprar() {
-        alert("Adicionado ao carrinho");
+       
         var idProduto = '@Model.idProduto';
         var quantidade = $("input[name=quantity]").val();
 
